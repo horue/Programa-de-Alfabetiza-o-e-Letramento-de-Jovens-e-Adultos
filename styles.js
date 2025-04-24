@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     hyperlink_clicked:{
       fontSize: 14,
       margin: 7,
-      color: "#0000cc",
+      color: "#000080",
       textAlign: "right",
       textDecorationLine: 'underline',
     },
