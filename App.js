@@ -3,12 +3,13 @@ import {useState} from 'react';
 
 
 
-// You can import supported modules from npm
+// Imports from npm
 import { Card } from 'react-native-paper';
 
-// or any files within the Snack
+// Imports from files
 import { styles } from './styles.js';
 
+// Universal Consts
 const d = new Date();
 let hour = d.getHours();
 
