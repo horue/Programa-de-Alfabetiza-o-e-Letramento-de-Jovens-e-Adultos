@@ -29,7 +29,7 @@ export default function App() {
         PALJA - Programa de Alfabetização e Letramento de Jovens e Adultos{'\n'}{'\n'}
         {hour < 12 ? (<Text>Bom Dia!</Text>):( hour < 18 ? (<Text>Boa Tarde!</Text>):(<Text>Boa Noite!</Text>))}
       </Text >
-            <Button title="ENTRAR COM EMAIL" icon="">
+            <Button title="ENTRAR COM EMAIL" icon="" color={'#00acbb'}>
       </Button>
       <Text style={styles.paragraph}>
       ----------------------- ou -----------------------
@@ -50,7 +50,7 @@ export default function App() {
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => !prev);}}>
         Esqueci minha senha/Cadastrar primeira senha
       </Text>
-      <Button title="Entrar">
+      <Button title="Entrar" color={'#00acbb'}>
       </Button>
     </SafeAreaView>
   );
