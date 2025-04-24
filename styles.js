@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
       resizeMode: "contain",
       justifyContent: 'center',
       position: 'center',
+      alignSelf: 'center',
     },
   });
   
