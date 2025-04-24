@@ -1,4 +1,6 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking} from 'react-native';
+import {useState} from 'react';
+
 
 
 // You can import supported modules from npm
@@ -10,7 +12,13 @@ let hour = d.getHours();
 
 
 
+
 export default function App() {
+  const [hyperlink_estado1, mudar_hyperlink1] = useState(true)
+  const [hyperlink_estado2, mudar_hyperlink2] = useState(true)
+
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={require('./assets/logo.png')} />
@@ -28,7 +36,7 @@ export default function App() {
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
-      <Text style={styles.hyperlink}>
+      <Text style={hyperlink_estado1 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink1(prev => !prev);}}>
         Não sei a matrícula
       </Text>
       <Text style={styles.common_text}>
@@ -36,7 +44,7 @@ export default function App() {
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
-      <Text style={styles.hyperlink}>
+      <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => !prev);}}>
         Esqueci minha senha/Cadastrar primeira senha
       </Text>
       <Button title="Entrar">
@@ -68,6 +76,13 @@ const styles = StyleSheet.create({
     margin: 7,
     color: "#0000ff",
     textAlign: "right",
+  },
+  hyperlink_clicked:{
+    fontSize: 14,
+    margin: 7,
+    color: "#0000cc",
+    textAlign: "right",
+    textDecorationLine: 'underline',
   },
   input: {
     borderWidth: 1,
