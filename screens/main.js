@@ -1,6 +1,9 @@
+//Imports React
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
+
+//Imoprts Locais
 import options  from '../components/options';
 
 
