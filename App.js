@@ -23,7 +23,7 @@ export default function App() {
 
   return(
     isLoggedIn ? 
-      <MainScreen/> : 
+      <MainScreen onExit={() => setIsLoggedIn(false)}/> : 
       <LoginScreen onLogin={() => setIsLoggedIn(true)}/>
   )
 }

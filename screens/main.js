@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import options  from '../components/options';
@@ -13,7 +13,7 @@ export const CardOptions = ({ icon, option}) => (
 );
 
 // Main Component
-export function MainScreen() {
+export function MainScreen({onExit}) {
     return(
         <View style={styles.container}>
         {options.map((item) => (
@@ -23,6 +23,7 @@ export function MainScreen() {
             option={item.option}
         />
         ))}
+    <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
     </View>
     )
 };
