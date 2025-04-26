@@ -9,6 +9,7 @@ import { Card } from 'react-native-paper';
 // Imports from files
 import { styles } from './styles.js';
 import LoginScreen from './screens/login.js';
+import { MainScreen } from './screens/main.js';
 
 // Universal Consts
 const d = new Date();
@@ -22,7 +23,7 @@ export default function App() {
 
   return(
     isLoggedIn ? 
-      <LoginScreen onLogin={() => setIsLoggedIn(false)}/> : 
+      <MainScreen/> : 
       <LoginScreen onLogin={() => setIsLoggedIn(true)}/>
   )
 }
