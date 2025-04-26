@@ -33,7 +33,12 @@ export function MainScreen({onExit}) {
 
 
 export const styles = StyleSheet.create({
-  container: { padding: 20 },
+  container: {
+    flex: 1,
+    backgroundColor: '#ecf0f1',
+    paddingTop: 180,
+    padding: 20,
+   },
   card: {
     backgroundColor: '#f9f9f9',
     padding: 15,
