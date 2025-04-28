@@ -7,6 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 //Imoprts Locais
 import options  from '../components/options';
+import { ProfileScreen } from './profile';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -32,14 +34,6 @@ export function OptionsScreen({onExit}) {
         ))}
     </ScrollView>
     )
-};
-
-export function ProfileScreen({onExit}) {
-  return(
-      <ScrollView style={styles.container}>
-        <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
-      </ScrollView>
-  )
 };
 
 export function MainScreen({onExit}) {
