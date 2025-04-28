@@ -1,5 +1,5 @@
 //Imports React
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 
@@ -18,7 +18,7 @@ export const CardOptions = ({ icon, option}) => (
 // Main Component
 export function MainScreen({onExit}) {
     return(
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
         {options.map((item) => (
         <CardOptions
             key={item.id}
@@ -27,7 +27,7 @@ export function MainScreen({onExit}) {
         />
         ))}
     <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
-    </View>
+    </ScrollView>
     )
 };
 
