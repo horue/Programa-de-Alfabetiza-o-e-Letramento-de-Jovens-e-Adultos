@@ -1,10 +1,14 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 //Imoprts Locais
 import options  from '../components/options';
+
+const Tab = createBottomTabNavigator();
 
 
 // Componente modelo
@@ -16,7 +20,7 @@ export const CardOptions = ({ icon, option}) => (
 );
 
 // Main Component
-export function MainScreen({onExit}) {
+export function OptionsScreen({onExit}) {
     return(
         <ScrollView style={styles.container}>
         {options.map((item) => (
@@ -26,10 +30,30 @@ export function MainScreen({onExit}) {
             option={item.option}
         />
         ))}
-    <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
     </ScrollView>
     )
 };
+
+export function ProfileScreen({onExit}) {
+  return(
+      <ScrollView style={styles.container}>
+        <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
+      </ScrollView>
+  )
+};
+
+export function MainScreen({onExit}) {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Opções" component={OptionsScreen}/>
+        <Tab.Screen name="Perfil">
+          {() => <ProfileScreen onExit={onExit} />}
+        </Tab.Screen>
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 
 
 export const styles = StyleSheet.create({
