@@ -1,8 +1,10 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { useState } from 'react';
+
 
 
 //Imoprts Locais
@@ -14,15 +16,15 @@ const Tab = createBottomTabNavigator();
 
 
 // Componente modelo
-export const CardOptions = ({ icon, option}) => (
-  <View style={styles.card}>
+export const CardOptions = ({ icon, option, aberto, setAberto}) => (
+  <TouchableOpacity style={styles.card} onPress={() => console.log('teste')}>
     <MaterialIcons name={icon} size={24}/>
     <Text style={styles.nome}>{option}</Text>
-  </View>
+  </TouchableOpacity>
 );
 
 // Main Component
-export function OptionsScreen({onExit}) {
+export function OptionsScreen({}) {
     return(
         <ScrollView style={styles.container}>
         {options.map((item) => (
