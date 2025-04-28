@@ -45,8 +45,10 @@ export function ProfileScreen({onExit}) {
 export function MainScreen({onExit}) {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Opções" component={OptionsScreen}/>
+      <Tab.Navigator screenOptions={{
+        animation: 'shift',
+      }}>
+        <Tab.Screen name="Opções" component={OptionsScreen} below-icon={<MaterialIcons name={'person-add'} size={24}/>}/>
         <Tab.Screen name="Perfil">
           {() => <ProfileScreen onExit={onExit} />}
         </Tab.Screen>
