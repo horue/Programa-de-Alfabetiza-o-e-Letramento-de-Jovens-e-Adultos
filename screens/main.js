@@ -45,9 +45,22 @@ export function ProfileScreen({onExit}) {
 export function MainScreen({onExit}) {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{
-        animation: 'shift',
-      }}>
+      <Tab.Navigator screenOptions={({route}) => ({
+          animation: 'shift',
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+
+            if (route.name === 'Opções') {
+              iconName = 'settings';
+            } else if (route.name === 'Perfil') {
+              iconName = 'person';
+            }
+
+            return <MaterialIcons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'balck',
+          tabBarInactiveTintColor: 'gray',
+        })}>
         <Tab.Screen name="Opções" component={OptionsScreen} below-icon={<MaterialIcons name={'person-add'} size={24}/>}/>
         <Tab.Screen name="Perfil">
           {() => <ProfileScreen onExit={onExit} />}
