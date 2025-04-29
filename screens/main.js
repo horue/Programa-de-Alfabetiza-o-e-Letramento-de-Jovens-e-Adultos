@@ -16,8 +16,8 @@ const Tab = createBottomTabNavigator();
 
 
 // Componente modelo
-export const CardOptions = ({ icon, option, aberto, setAberto}) => (
-  <TouchableOpacity style={styles.card} onPress={() => console.log('teste')}>
+export const CardOptions = ({ icon, option, aberto, setAberto, dropdown}) => (
+  <TouchableOpacity style={styles.card} onPress={() => console.log(dropdown)}>
     <MaterialIcons name={icon} size={24}/>
     <Text style={styles.nome}>{option}</Text>
   </TouchableOpacity>
@@ -32,6 +32,7 @@ export function OptionsScreen({}) {
             key={item.id}
             icon={item.icon}
             option={item.option}
+            dropdown={item.dropdown}
         />
         ))}
     </ScrollView>
