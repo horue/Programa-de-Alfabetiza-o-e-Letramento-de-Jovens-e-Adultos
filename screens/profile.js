@@ -6,12 +6,13 @@ import { NavigationContainer } from '@react-navigation/native';
 
 
 //Imoprts Locais
-
+import { CustomButton } from '../components/buttons';
 
 export function ProfileScreen({onExit}) {
   return(
       <ScrollView style={styles.container}>
         <Button title="Sair" color={'#00acbb'} onPress={onExit}/>
+        <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
       </ScrollView>
   )
 };

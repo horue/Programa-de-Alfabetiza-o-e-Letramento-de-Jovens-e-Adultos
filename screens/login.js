@@ -8,6 +8,7 @@ import { Card } from 'react-native-paper';
 
 // Imports from files
 import { styles } from '../styles.js';
+import { CustomButton } from '../components/buttons.js';
 
 // Universal Consts
 const d = new Date();
@@ -28,8 +29,7 @@ export default function LoginScreen({ onLogin }) {
         PALJA - Programa de Alfabetização e Letramento de Jovens e Adultos{'\n'}{'\n'}
         {hour < 12 ? (<Text>Bom Dia!</Text>):( hour < 18 ? (<Text>Boa Tarde!</Text>):(<Text>Boa Noite!</Text>))}
       </Text >
-            <Button title="ENTRAR COM EMAIL" icon="" color={'#00acbb'}>
-      </Button>
+      <CustomButton buttonText='Entrar com email' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={console.log("teste")}></CustomButton>
       <Text style={styles.paragraph}>
       ----------------------- ou -----------------------
       </Text>
@@ -49,8 +49,7 @@ export default function LoginScreen({ onLogin }) {
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
         Esqueci minha senha/Cadastrar primeira senha
       </Text>
-      <Button title="Entrar" color={'#00acbb'} onPress={onLogin}>
-      </Button>
+      <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
     </SafeAreaView>
   );
 }
