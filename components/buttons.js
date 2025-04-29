@@ -9,7 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 // Componente modelo
 export const CustomButton = ({ icon, buttonText, textAlign, onPress, buttonColor, textColor }) => (
-  <TouchableOpacity style={[styles.card, {backgroundColor: buttonColor}]} onPress={() => onPress()}>
+  <TouchableOpacity style={[styles.card, {backgroundColor: buttonColor}]} onPress={() => {try{onPress()}catch(error){console.log('No function defined')}}}>
     <Text style={[styles.text, { textAlign, color: textColor, fontWeight: 'bold'  }]}>{buttonText.toUpperCase()}</Text>
   </TouchableOpacity>
 );
