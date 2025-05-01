@@ -33,8 +33,8 @@ export const styles = StyleSheet.create({
     },
     input: {
       borderWidth: 1,
-      borderRadius: 6,
-      borderColor:"#000000",
+      borderRadius: 18,
+      borderColor:"#001a33",
       height: 38,
       backgroundColor: "#e0f0ff"
     },
