@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center', 
+        elevation: 2
     },
     center: {
         fontSize: 14, 
