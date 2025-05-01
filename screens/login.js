@@ -29,7 +29,7 @@ export default function LoginScreen({ onLogin }) {
         PALJA - Programa de Alfabetização e Letramento de Jovens e Adultos{'\n'}{'\n'}
         {hour < 12 ? (<Text>Bom Dia!</Text>):( hour < 18 ? (<Text>Boa Tarde!</Text>):(<Text>Boa Noite!</Text>))}
       </Text >
-      <CustomButton buttonText='Entrar com email' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={console.log("teste")}></CustomButton>
+      <CustomButton buttonText='Entrar com email' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
       <Text style={styles.paragraph}>
       ----------------------- ou -----------------------
       </Text>
