@@ -44,7 +44,7 @@ export default function LoginScreen({ onLogin }) {
       <Text style={styles.common_text}>
         Senha
       </Text>
-      <TextInput style={styles.input}>
+      <TextInput style={styles.input} secureTextEntry={true}>
       </TextInput>
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
         Esqueci minha senha/Cadastrar primeira senha
