@@ -4,27 +4,41 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { useState } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 
 
 //Imoprts Locais
 import options  from '../components/options';
 import { ProfileScreen } from './profile';
+import RegisterScreen from './register';
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
+
+
+function OptionsStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="OptionsScreen" component={OptionsScreen} options={{ title: 'Opções' }}/>
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Cadastro' }}/>
+    </Stack.Navigator>
+  );
+}
 
 // Componente modelo
-export const CardOptions = ({ icon, option, aberto, setAberto, dropdown}) => (
-  <TouchableOpacity style={styles.card} onPress={() => console.log(dropdown)}>
+export const CardOptions = ({ icon, option, aberto, onPress}) => (
+  <TouchableOpacity style={styles.card} onPress={onPress}>
     <MaterialIcons name={icon} size={24}/>
     <Text style={styles.nome}>{option}</Text>
   </TouchableOpacity>
 );
 
 // Main Component
-export function OptionsScreen({}) {
+export function OptionsScreen({ navigation }) {
     return(
         <ScrollView style={styles.container}>
         {options.map((item) => (
@@ -32,7 +46,7 @@ export function OptionsScreen({}) {
             key={item.id}
             icon={item.icon}
             option={item.option}
-            dropdown={item.dropdown}
+            onPress={() => navigation.navigate(item.screen)}
         />
         ))}
     </ScrollView>
@@ -58,7 +72,7 @@ export function MainScreen({onExit}) {
           tabBarActiveTintColor: 'balck',
           tabBarInactiveTintColor: 'gray',
         })}>
-        <Tab.Screen name="Opções" component={OptionsScreen} below-icon={<MaterialIcons name={'person-add'} size={24}/>}/>
+        <Tab.Screen name="Opções" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
         <Tab.Screen name="Perfil">
           {() => <ProfileScreen onExit={onExit} />}
         </Tab.Screen>
