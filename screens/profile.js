@@ -7,10 +7,12 @@ import { NavigationContainer } from '@react-navigation/native';
 
 //Imoprts Locais
 import { CustomButton } from '../components/buttons';
+import { TwoColumnCard } from '../components/twocolumn';
 
 export function ProfileScreen({onExit}) {
   return(
       <ScrollView style={styles.container}>
+        <TwoColumnCard nomeCompleto={'Jorge Magno Reis Vidal Filho'}></TwoColumnCard>
         <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/estacio-logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
@@ -40,7 +42,7 @@ export const styles = StyleSheet.create({
     },
     logo: {
       margin: 29,
-      height: '36%',
+      height: '18%',
       resizeMode: "contain",
       justifyContent: 'center',
       position: 'center',
