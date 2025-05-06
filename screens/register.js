@@ -1,5 +1,6 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View} from 'react-native';
 import {useState} from 'react';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 
@@ -10,9 +11,32 @@ import { Card } from 'react-native-paper';
 import { styles } from '../styles.js';
 import { CustomButton } from '../components/buttons.js';
 
-// Universal Consts
-const d = new Date();
-let hour = d.getHours();
+
+const TypeDropdown = () => {
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const options = [
+    { label: 'Aluno', value: 'aluno' },
+    { label: 'Professor', value: 'professor' },
+    { label: 'Monitor', value: 'monitor' },
+    { label: 'Administrador', value: 'administrador' },
+  ];
+
+  const handleValueChange = (value) => {
+    setSelectedValue(value);
+  };
+
+  return (
+    <View>
+      <RNPickerSelect
+        onValueChange={handleValueChange}
+        items={options}
+        placeholder={{ label: 'Selecione...', value: null }}
+        value={selectedValue}
+      />
+    </View>
+  );
+};
 
 
 
@@ -23,6 +47,7 @@ export default function RegisterScreen({ onLogin }) {
       <Text style={styles.paragraph}>
         Adicionar novo usuário{'\n'}{'\n'}
       </Text >
+      <TypeDropdown></TypeDropdown>
       <Text style={styles.common_text}>
         Nome Completo
       </Text>
@@ -30,11 +55,6 @@ export default function RegisterScreen({ onLogin }) {
       </TextInput>
       <Text style={styles.common_text}>
         Email
-      </Text>
-      <TextInput style={styles.input}>
-      </TextInput>
-      <Text style={styles.common_text}>
-        Matrícula
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
