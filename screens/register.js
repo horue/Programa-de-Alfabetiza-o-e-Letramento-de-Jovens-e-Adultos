@@ -8,7 +8,6 @@ import RNPickerSelect from 'react-native-picker-select';
 import { Card } from 'react-native-paper';
 
 // Imports from files
-import { styles } from '../styles.js';
 import { CustomButton } from '../components/buttons.js';
 
 
@@ -31,7 +30,7 @@ const TypeDropdown = () => {
       <RNPickerSelect
         onValueChange={handleValueChange}
         items={options}
-        placeholder={{ label: 'Selecione...', value: null }}
+        placeholder={{ label: 'Tipo de Usuário', value: null }}
         value={selectedValue}
       />
     </View>
@@ -43,7 +42,6 @@ const TypeDropdown = () => {
 export default function RegisterScreen({ onLogin }) {
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.logo} source={require('../assets/logo.png')} />
       <Text style={styles.paragraph}>
         Adicionar novo usuário{'\n'}{'\n'}
       </Text >
@@ -58,7 +56,48 @@ export default function RegisterScreen({ onLogin }) {
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
+      <Text style={styles.common_text}>
+        CPF
+      </Text>
+      <TextInput style={styles.input}>
+      </TextInput>
+      <Text style={styles.common_text}>
+        Data de Nascimento
+      </Text>
+      <TextInput style={styles.input}>
+      </TextInput>
       <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
     </SafeAreaView>
   );
 }
+
+
+export const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+      padding: 8,
+      gap: 12,
+    },
+    paragraph: {
+      margin: 24,
+      fontSize: 18,
+      fontWeight: 'medium',
+      textAlign: 'center',
+    },
+    common_text: {
+      fontSize: 15,
+      marginBottom: 7,
+      color: "#000000",
+      textAlign: "left",
+    },
+    input: {
+      borderWidth: 1,
+      borderRadius: 18,
+      borderColor:"#001a33",
+      height: 38,
+      backgroundColor: "#e0f0ff"
+    },
+  });
+  
