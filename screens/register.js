@@ -59,7 +59,7 @@ export default function RegisterScreen({ onLogin }) {
       <Text style={styles.common_text}>
         CPF
       </Text>
-      <TextInput style={styles.input}>
+      <TextInput style={styles.input}  keyboardType="numeric">
       </TextInput>
       <Text style={styles.common_text}>
         Data de Nascimento
@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       backgroundColor: '#ecf0f1',
-      padding: 8,
+      padding: 20,
       gap: 12,
     },
     paragraph: {
