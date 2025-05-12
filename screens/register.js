@@ -9,6 +9,7 @@ import { Card } from 'react-native-paper';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
+import { handleRegister } from '../modules/createUser.js';
 
 
 const TypeDropdown = () => {
@@ -40,6 +41,11 @@ const TypeDropdown = () => {
 
 
 export default function RegisterScreen({ onLogin }) {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [nascimento, setNascimento] = useState('');
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.paragraph}>
@@ -51,31 +57,42 @@ export default function RegisterScreen({ onLogin }) {
       <Text style={styles.common_text}>
         Nome Completo
       </Text>
-      <TextInput style={styles.input}>
+      <TextInput 
+        style={styles.input}
+        value={nome}
+        onChangeText={setNome}>
       </TextInput>
 
 
       <Text style={styles.common_text}>
         Email
       </Text>
-      <TextInput style={styles.input}>
+      <TextInput 
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}>
       </TextInput>
 
 
       <Text style={styles.common_text}>
         CPF
       </Text>
-      <TextInput style={styles.input}  keyboardType="numeric">
+      <TextInput style={styles.input}
+        keyboardType="numeric"
+        value={cpf}
+        onChangeText={setCpf}>
       </TextInput>
 
 
       <Text style={styles.common_text}>
         Data de Nascimento
       </Text>
-      <TextInput style={styles.input}>
+      <TextInput style={styles.input}
+        value={nascimento}
+        onChangeText={setNascimento}>
       </TextInput>
 
-      
+
       <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
     </SafeAreaView>
   );
