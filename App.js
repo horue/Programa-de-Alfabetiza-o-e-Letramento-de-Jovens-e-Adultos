@@ -11,7 +11,6 @@ const d = new Date();
 
 
 
-
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado aqui
 
