@@ -46,26 +46,36 @@ export default function RegisterScreen({ onLogin }) {
         Adicionar novo usuário{'\n'}{'\n'}
       </Text >
       <TypeDropdown></TypeDropdown>
+
+
       <Text style={styles.common_text}>
         Nome Completo
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
+
+
       <Text style={styles.common_text}>
         Email
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
+
+
       <Text style={styles.common_text}>
         CPF
       </Text>
       <TextInput style={styles.input}  keyboardType="numeric">
       </TextInput>
+
+
       <Text style={styles.common_text}>
         Data de Nascimento
       </Text>
       <TextInput style={styles.input}>
       </TextInput>
+
+      
       <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
     </SafeAreaView>
   );
