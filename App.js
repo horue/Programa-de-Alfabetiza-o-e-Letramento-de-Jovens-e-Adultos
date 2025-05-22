@@ -4,6 +4,7 @@ import {useState} from 'react';
 
 // Imports from files
 import LoginScreen from './screens/login.js';
+import LoginEmailScreen from './screens/loginEmail.js';
 import { MainScreen } from './screens/main.js';
 
 // Universal Consts
@@ -17,6 +18,6 @@ export default function App() {
   return(
     isLoggedIn ? 
       <MainScreen onExit={() => setIsLoggedIn(false)}/> : 
-      <LoginScreen onLogin={() => setIsLoggedIn(true)}/>
+      <LoginEmailScreen onLogin={() => setIsLoggedIn(true)}/>
   )
 }

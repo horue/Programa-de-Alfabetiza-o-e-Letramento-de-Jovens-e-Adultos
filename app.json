@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "PALJA",
+    "slug": "snack-4958e2e8-c6d6-4bba-8ca6-a0a5d2377876",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "Programa-de-Alfabetiza-o-e-Letramento-de-Jovens-e-Adultos"
+  }
+}

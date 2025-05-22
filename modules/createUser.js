@@ -1,6 +1,3 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../firebase/firebaseConfig';
 
 export const handleRegister = async () => {
   try {

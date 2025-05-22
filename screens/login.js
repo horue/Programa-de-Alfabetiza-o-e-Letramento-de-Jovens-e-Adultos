@@ -1,14 +1,13 @@
 import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking} from 'react-native';
 import {useState} from 'react';
 
-
-
 // Imports from npm
 import { Card } from 'react-native-paper';
 
 // Imports from files
 import { styles } from '../styles.js';
 import { CustomButton } from '../components/buttons.js';
+import LoginEmailScreen from './loginEmail.js';
 
 // Universal Consts
 const d = new Date();
@@ -29,7 +28,7 @@ export default function LoginScreen({ onLogin }) {
         PALJA - Programa de Alfabetização e Letramento de Jovens e Adultos{'\n'}{'\n'}
         {hour < 12 ? (<Text>Bom Dia!</Text>):( hour < 18 ? (<Text>Boa Tarde!</Text>):(<Text>Boa Noite!</Text>))}
       </Text >
-      <CustomButton buttonText='Entrar com email' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
+      <CustomButton buttonText='Entrar com email' textAlign='center' textColor='white' buttonColor='#00acbb'> onPress={} </CustomButton>
       <Text style={styles.paragraph}>
       ----------------------- ou -----------------------
       </Text>

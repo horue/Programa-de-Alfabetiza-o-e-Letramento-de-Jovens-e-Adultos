@@ -9,10 +9,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 
-//Imoprts Locais
+//Imports Locais
 import options  from '../components/options';
 import { ProfileScreen } from './profile';
 import RegisterScreen from './register';
+import LoginEmailScreen from './loginEmail';
 
 
 const Tab = createBottomTabNavigator();
@@ -69,7 +70,7 @@ export function MainScreen({onExit}) {
 
             return <MaterialIcons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'balck',
+          tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: 'gray',
         })}>
         <Tab.Screen name="Opções" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
