@@ -8,7 +8,7 @@ import { Card } from 'react-native-paper';
 // Imports from files
 import { styles } from '../styles.js';
 import { CustomButton } from '../components/buttons.js';
-import { firebaseAuth } from '../firebase/FirebaseConfig.js';
+import { firebaseAuth } from '../firebase/firebaseConfig.js';
 import { signInWithEmailAndPassword } from 'firebase/auth/web-extension';
 
 // Universal Consts

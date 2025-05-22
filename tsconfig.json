@@ -14,5 +14,5 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
-, "firebase/FirebaseConfig.js", "App.js"  ]
+, "firebase/firebaseConfig.js", "App.js"  ]
 }
