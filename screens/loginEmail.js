@@ -3,7 +3,7 @@ import {useState} from 'react';
 
 
 // Imports from npm
-import { Card } from 'react-native-paper';
+import { ActivityIndicator, Card } from 'react-native-paper';
 
 // Imports from files
 import { styles } from '../styles.js';
@@ -15,20 +15,23 @@ import { signInWithEmailAndPassword } from 'firebase/auth/web-extension';
 const d = new Date();
 let hour = d.getHours();
 
-export default function LoginEmailScreen({}) {
+export default function LoginEmailScreen({onLogin}) {
     const [hyperlink_estado2, mudar_hyperlink2] = useState(true)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [loading, setLoading] = useState(false)
+
     const signIn = async () => {
       try {
         const user = await signInWithEmailAndPassword(firebaseAuth, email, password)
-        alert("Logado com sucesso");
+        onLogin()
       } 
       catch (err) {
         console.log(err.message)
         alert("Erro no Login: " + err.message);
+        setLoading(loading)
       }
     }
 
@@ -52,7 +55,11 @@ export default function LoginEmailScreen({}) {
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
         Esqueci minha senha/Cadastrar primeira senha
       </Text>
-      <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={signIn}></CustomButton>
+      {
+        loading ?
+        <ActivityIndicator size="large" color="#00acbb"/> :
+        <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => { signIn(); setLoading(!loading); }}></CustomButton>
+      }
     </SafeAreaView>
   );
 }

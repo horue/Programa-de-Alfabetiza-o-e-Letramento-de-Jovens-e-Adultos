@@ -1,11 +1,12 @@
 import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking} from 'react-native';
-import {useState} from 'react';
-
+import {createContext, useEffect, useState} from 'react';
+import { onAuthStateChanged } from "firebase/auth";
 
 // Imports from files
 import LoginScreen from './screens/login.js';
 import LoginEmailScreen from './screens/loginEmail.js';
 import { MainScreen } from './screens/main.js';
+import { firebaseAuth } from './firebase/firebaseConfig.js';
 
 // Universal Consts
 const d = new Date();

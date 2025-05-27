@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Button, ScrollView, Image} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { firebaseAuth } from '../firebase/firebaseConfig.js';
+import { getAuth } from 'firebase/auth';
 
 
 //Imoprts Locais
@@ -10,10 +12,14 @@ import { CustomButton } from '../components/buttons';
 import { TwoColumnCard } from '../components/twocolumn';
 
 export function ProfileScreen({onExit}) {
+  getAuth().onAuthStateChanged((user) => {
+    if (!user) onExit();
+  });
+
   return(
       <ScrollView style={styles.container}>
         <TwoColumnCard nomeCompleto={'Jorge Magno Reis Vidal Filho'}></TwoColumnCard>
-        <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
+        <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => firebaseAuth.signOut()} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/estacio-logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
       </ScrollView>
