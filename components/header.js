@@ -11,7 +11,7 @@ const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sáb
 
 
 const d = new Date();
-const day = d.getDay();
+const day = d.getDay()+1;
 const week = days[d.getDay()]
 const month = months[d.getMonth()];
 
@@ -34,13 +34,16 @@ export const CustomHeader = ({}) => (
   </Card>
 );
 
-// Main Component
 export const styles = StyleSheet.create({
     card: {
+        backgroundColor: '#00acbb',
         height: 120,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    text:{
+        color: 'white',
     },
     center: {
         fontSize: 14, 
