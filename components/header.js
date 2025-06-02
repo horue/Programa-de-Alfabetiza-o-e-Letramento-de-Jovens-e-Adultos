@@ -23,8 +23,10 @@ export const CustomHeader = ({}) => (
         <TouchableOpacity style={styles.card}>
             <MaterialIcons name='arrow-left' size={62}/>
         </TouchableOpacity>
-        <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
-        <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
+        <View>
+            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
+            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
+        </View>
         <TouchableOpacity style={styles.card}>
             <MaterialIcons name='arrow-right' size={62}/>
         </TouchableOpacity>
@@ -36,7 +38,6 @@ export const CustomHeader = ({}) => (
 export const styles = StyleSheet.create({
     card: {
         height: 120,
-        width: 'fill',
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
