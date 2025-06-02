@@ -1,6 +1,7 @@
 //Imports React
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Card } from 'react-native-paper';
 
 
 
@@ -17,17 +18,25 @@ const month = months[d.getMonth()];
 
 // Componente modelo
 export const CustomHeader = ({}) => (
-  <TouchableOpacity style={styles.card}>
-    <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
-    <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
-  </TouchableOpacity>
+  <Card style={styles.card}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <TouchableOpacity style={styles.card}>
+            <MaterialIcons name='arrow-left' size={62}/>
+        </TouchableOpacity>
+        <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
+        <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
+        <TouchableOpacity style={styles.card}>
+            <MaterialIcons name='arrow-right' size={62}/>
+        </TouchableOpacity>
+    </View>
+  </Card>
 );
 
 // Main Component
 export const styles = StyleSheet.create({
     card: {
         height: 120,
-        width: '100%',
+        width: 'fill',
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
