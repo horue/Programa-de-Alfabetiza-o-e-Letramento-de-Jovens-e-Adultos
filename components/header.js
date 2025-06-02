@@ -21,14 +21,14 @@ export const CustomHeader = ({}) => (
   <Card style={styles.card}>
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <TouchableOpacity style={styles.card}>
-            <MaterialIcons name='arrow-left' size={62}/>
+            <MaterialIcons name='arrow-left' size={62} color={'white'}/>
         </TouchableOpacity>
         <View>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
         </View>
         <TouchableOpacity style={styles.card}>
-            <MaterialIcons name='arrow-right' size={62}/>
+            <MaterialIcons name='arrow-right' size={62} color={'white'}/>
         </TouchableOpacity>
     </View>
   </Card>
