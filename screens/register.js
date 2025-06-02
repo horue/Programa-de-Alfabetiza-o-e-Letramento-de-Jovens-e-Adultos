@@ -9,7 +9,7 @@ import { Card } from 'react-native-paper';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
-import { handleRegister } from '../modules/createUser.js';
+import { adicionarUsuario } from '../modules/createUser.js';
 
 
 const TypeDropdown = () => {
@@ -93,7 +93,7 @@ export default function RegisterScreen({ onLogin }) {
       </TextInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
     </SafeAreaView>
   );
 }
