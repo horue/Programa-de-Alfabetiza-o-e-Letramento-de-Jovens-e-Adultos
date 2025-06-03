@@ -20,14 +20,14 @@ const month = months[d.getMonth()];
 export const CustomHeader = ({}) => (
   <Card style={styles.card}>
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.arrow}>
             <MaterialIcons name='arrow-left' size={62} color={'white'}/>
         </TouchableOpacity>
         <View>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
         </View>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.arrow}>
             <MaterialIcons name='arrow-right' size={62} color={'white'}/>
         </TouchableOpacity>
     </View>
@@ -36,6 +36,13 @@ export const CustomHeader = ({}) => (
 
 export const styles = StyleSheet.create({
     card: {
+        width: '100%',
+        backgroundColor: '#00acbb',
+        height: 120,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    arrow: {
         backgroundColor: '#00acbb',
         height: 120,
         borderRadius: 18,
