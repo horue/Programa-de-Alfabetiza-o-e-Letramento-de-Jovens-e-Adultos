@@ -14,26 +14,38 @@ const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sáb
 
 const d = new Date();
 const day = d.getDate();
-const week = days[d.getDay()]
+const week = d.getDay()
 const month = months[d.getMonth()];
 
 
 // Componente modelo
 export const CustomHeader = ({}) => {
-  const [fDay, setDay] = useState(day);
+    const [fDay, setDay] = useState(day);
+    const [b, setB] = useState(week);
+    const [fWeek, setWeek] = useState(days[b]);
+
 
     function increment() {
+        const newIndex = (b + 1) % 7;
         setDay(a => a + 1);
-            if (fDay >= 31) {
-                setDay(1)
+        if (fDay >= 31) {
+            setDay(1)
         }
+        setB(newIndex);
+        setWeek(days[newIndex]);
     }
 
     function decrement() {
+        const newIndex = (b - 1 + 7) % 7;
         setDay(a => a - 1);
-            if (fDay <= 1) {
-                setDay(1)
+        if (fDay <= 1) {
+            setDay(31)
         }
+        setB(newIndex);
+        if (b >= 7) {
+            setB(1)
+        }
+        setWeek(days[newIndex]);
     }
 
   return(
@@ -43,7 +55,7 @@ export const CustomHeader = ({}) => {
             <MaterialIcons name='arrow-left' size={62} color={'white'}/>
         </TouchableOpacity>
         <View>
-            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
+            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{fWeek}</Text>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{fDay} {month}</Text>
         </View>
         <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
