@@ -2,6 +2,8 @@
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Card } from 'react-native-paper';
+import { useState } from 'react';
+
 
 
 
@@ -11,28 +13,45 @@ const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sáb
 
 
 const d = new Date();
-const day = d.getDay()+1;
+const day = d.getDate();
 const week = days[d.getDay()]
 const month = months[d.getMonth()];
 
 
 // Componente modelo
-export const CustomHeader = ({}) => (
+export const CustomHeader = ({}) => {
+  const [fDay, setDay] = useState(day);
+
+    function increment() {
+        setDay(a => a + 1);
+            if (fDay >= 31) {
+                setDay(1)
+        }
+    }
+
+    function decrement() {
+        setDay(a => a - 1);
+            if (fDay <= 1) {
+                setDay(1)
+        }
+    }
+
+  return(
   <Card style={styles.card}>
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <TouchableOpacity style={styles.arrow}>
+        <TouchableOpacity style={styles.arrow} onPress={() => decrement()}>
             <MaterialIcons name='arrow-left' size={62} color={'white'}/>
         </TouchableOpacity>
         <View>
             <Text style={[styles.text, { fontWeight: 'bold'  }]}>{week}</Text>
-            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{day} {month}</Text>
+            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{fDay} {month}</Text>
         </View>
-        <TouchableOpacity style={styles.arrow}>
+        <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
             <MaterialIcons name='arrow-right' size={62} color={'white'}/>
         </TouchableOpacity>
     </View>
   </Card>
-);
+)};
 
 export const styles = StyleSheet.create({
     card: {
@@ -51,15 +70,6 @@ export const styles = StyleSheet.create({
     },
     text:{
         color: 'white',
-    },
-    center: {
-        fontSize: 14, 
-        fontWeight: 'bold', 
-        alignSelf: 'center', 
-    },
-    left: { 
-        fontSize: 14, 
-        fontWeight: 'bold', 
-        alignSelf: 'left', 
+        alignSelf: 'center',
     },
 });
