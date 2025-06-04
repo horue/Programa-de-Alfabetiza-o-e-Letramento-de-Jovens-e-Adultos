@@ -52,14 +52,14 @@ export const CustomHeader = ({}) => {
   <Card style={styles.card}>
     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <TouchableOpacity style={styles.arrow} onPress={() => decrement()}>
-            <MaterialIcons name='arrow-left' size={62} color={'white'}/>
+            <MaterialIcons name='chevron-left' size={62} color={'white'}/>
         </TouchableOpacity>
         <View>
-            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{fWeek}</Text>
-            <Text style={[styles.text, { fontWeight: 'bold'  }]}>{fDay} {month}</Text>
+            <Text style={[styles.text]}>{fWeek}</Text>
+            <Text style={[styles.text, { fontSize: 18  }]}>{fDay} {month}</Text>
         </View>
         <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
-            <MaterialIcons name='arrow-right' size={62} color={'white'}/>
+            <MaterialIcons name='chevron-right' size={62} color={'white'}/>
         </TouchableOpacity>
     </View>
   </Card>
@@ -81,7 +81,13 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text:{
+        fontSize: 22,
+        width: 100,
+        fontWeight: 'bold',
         color: 'white',
         alignSelf: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
     },
 });
