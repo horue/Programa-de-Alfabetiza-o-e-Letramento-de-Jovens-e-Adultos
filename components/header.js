@@ -74,6 +74,7 @@ export const styles = StyleSheet.create({
         height: 120,
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius: 0,
     },
     arrow: {
         backgroundColor: '#00acbb',
