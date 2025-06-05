@@ -12,26 +12,33 @@ import DarkOverlay from './overlay';
 //Chamada da Data
 const months = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTRUBRO", "NOVEMBRO", "DEZEMBRO"];
 const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+const months31 = [0, 2, 4, 6, 7, 9, 11]
+const months30 = [3, 5, 8, 10]; 
 
 
 const d = new Date();
 const day = d.getDate();
 const week = d.getDay()
 const month = months[d.getMonth()];
-
+const monthIndex0 = d.getMonth();
 
 // Componente modelo
 export const CustomHeader = ({}) => {
     const [fDay, setDay] = useState(day);
     const [b, setB] = useState(week);
     const [fWeek, setWeek] = useState(days[b]);
-
+    const [fMonth, setMonth] = useState(monthIndex0);
 
     function increment() {
         const newIndex = (b + 1) % 7;
         setDay(a => a + 1);
-        if (fDay >= 31) {
+        if (fDay >= 31 && months31.includes(monthIndex0)) {
             setDay(1)
+            setMonth(fMonth + 1)
+        }
+        else if (fDay >= 30 && months30.includes(monthIndex0)) {
+            setDay(1)
+            setMonth(fMonth + 1)
         }
         setB(newIndex);
         setWeek(days[newIndex]);
@@ -58,7 +65,7 @@ export const CustomHeader = ({}) => {
         </TouchableOpacity>
         <View>
             <Text style={[styles.text]}>{fWeek}</Text>
-            <Text style={[styles.text, { fontSize: 18  }]}>{fDay < 10 ? (`0${fDay} ${month}`):(`${fDay} ${month}`)}</Text>
+            <Text style={[styles.text, { fontSize: 18  }]}>{fDay < 10 ? (`0${fDay} ${fMonth}`):(`${fDay} ${fMonth}`)}</Text>
         </View>
         <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
             <MaterialIcons name='chevron-right' size={62} color={'white'}/>
