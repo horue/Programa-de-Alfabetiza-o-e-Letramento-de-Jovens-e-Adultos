@@ -47,12 +47,13 @@ export const CustomHeader = ({}) => {
     function decrement() {
         const newIndex = (b - 1 + 7) % 7;
         setDay(a => a - 1);
-        if (fDay <= 1) {
-            setDay(31)
+        if (fDay < 31 && months31.includes(monthIndex0)) {
+            setDay(30)
+            setMonth(fMonth - 1)
         }
-        setB(newIndex);
-        if (b >= 7) {
-            setB(1)
+        else if (fDay < 30 && months30.includes(monthIndex0)) {
+            setDay(30)
+            setMonth(fMonth - 1)
         }
         setWeek(days[newIndex]);
     }
@@ -65,7 +66,7 @@ export const CustomHeader = ({}) => {
         </TouchableOpacity>
         <View>
             <Text style={[styles.text]}>{fWeek}</Text>
-            <Text style={[styles.text, { fontSize: 18  }]}>{fDay < 10 ? (`0${fDay} ${fMonth}`):(`${fDay} ${fMonth}`)}</Text>
+            <Text style={[styles.text, { fontSize: 18  }]}>{fDay < 10 ? (`0${fDay} ${months[fMonth]}`):(`${fDay} ${months[fMonth]}`)}</Text>
         </View>
         <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
             <MaterialIcons name='chevron-right' size={62} color={'white'}/>
