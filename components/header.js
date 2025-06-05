@@ -4,6 +4,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Card } from 'react-native-paper';
 import { useState } from 'react';
 
+import DarkOverlay from './overlay';
+
 
 
 
@@ -56,7 +58,7 @@ export const CustomHeader = ({}) => {
         </TouchableOpacity>
         <View>
             <Text style={[styles.text]}>{fWeek}</Text>
-            <Text style={[styles.text, { fontSize: 18  }]}>{fDay} {month}</Text>
+            <Text style={[styles.text, { fontSize: 18  }]}>{fDay < 10 ? (`0${fDay} ${month}`):(`${fDay} ${month}`)}</Text>
         </View>
         <TouchableOpacity style={styles.arrow} onPress={() => increment()}>
             <MaterialIcons name='chevron-right' size={62} color={'white'}/>
