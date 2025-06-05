@@ -11,6 +11,7 @@ import DarkOverlay from './overlay';
 
 //Chamada da Data
 const months = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTRUBRO", "NOVEMBRO", "DEZEMBRO"];
+const monthsS = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
 const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 const months31 = [0, 2, 4, 6, 7, 9, 11]
 const months30 = [3, 5, 8, 10]; 
