@@ -10,9 +10,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 //Imoprts Locais
-import options  from '../components/options';
+import { professor_options, full_options } from '../components/options';
 import { ProfileScreen } from './profile';
 import RegisterScreen from './register';
+import { CustomHeader } from '../components/header';
 
 
 const Tab = createBottomTabNavigator();
@@ -39,7 +40,11 @@ export const CardOptions = ({ icon, option, aberto, onPress}) => (
 
 // Main Component
 export function OptionsScreen({ navigation }) {
+  const [isProfessor, setProfessor] = useState(true);   
+  const options = isProfessor ? professor_options : full_options;
     return(
+      <>
+        <CustomHeader></CustomHeader>
         <ScrollView style={styles.container}>
         {options.map((item) => (
         <CardOptions
@@ -50,6 +55,7 @@ export function OptionsScreen({ navigation }) {
         />
         ))}
     </ScrollView>
+      </>
     )
 };
 
@@ -86,7 +92,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ecf0f1',
-    paddingTop: 120,
     padding: 20,
    },
   card: {
