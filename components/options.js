@@ -9,7 +9,7 @@ export const full_options = [
 
 export const professor_options = [
   { id: 1, icon:"how-to-reg", option: "Realizar Chamada", screen:"realizar_chamada"},
-  { id: 2, icon:"note-add", option: "Adicionar Conteúdo", screen:"Adicionar Conteúdo"},
+  { id: 2, icon:"note-add", option: "Adicionar Conteúdo", screen:"SubjectScreen"},
 ];
 
 
