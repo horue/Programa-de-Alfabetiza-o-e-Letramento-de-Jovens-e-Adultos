@@ -33,11 +33,11 @@ export const CustomHeader = ({}) => {
     function increment() {
         const newIndex = (b + 1) % 7;
         setDay(a => a + 1);
-        if (fDay >= 31 && months31.includes(monthIndex0)) {
+        if (fDay >= 31 && months31.includes(fMonth)) {
             setDay(1)
             setMonth(fMonth + 1)
         }
-        else if (fDay >= 30 && months30.includes(monthIndex0)) {
+        else if (fDay >= 30 && months30.includes(fMonth)) {
             setDay(1)
             setMonth(fMonth + 1)
         }
@@ -48,11 +48,11 @@ export const CustomHeader = ({}) => {
     function decrement() {
         const newIndex = (b - 1 + 7) % 7;
         setDay(a => a - 1);
-        if (fDay <= 31 && months31.includes(monthIndex0)) {
+        if (fDay <= 1 && months31.includes(fMonth)) {
             setDay(30)
             setMonth(fMonth - 1)
         }
-        else if (fDay <= 1 && months30.includes(monthIndex0)) {
+        else if (fDay <= 1 && months30.includes(fMonth)) {
             setDay(31)
             setMonth(fMonth - 1)
         }
