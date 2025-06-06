@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { professor_options, full_options } from '../components/options';
 import { ProfileScreen } from './profile';
 import RegisterScreen from './register';
+import SubjectScreen from './subject';
 import { CustomHeader } from '../components/header';
 
 
@@ -26,6 +27,7 @@ function OptionsStack() {
     <Stack.Navigator screenOptions={{ headerShown: true }}>
       <Stack.Screen name="OptionsScreen" component={OptionsScreen} options={{ title: 'Opções' }}/>
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Cadastro' }}/>
+      <Stack.Screen name="SubjectScreen" component={SubjectScreen} options={{ title: 'Adicionar Conteúdo' }}/>
     </Stack.Navigator>
   );
 }
