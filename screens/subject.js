@@ -36,9 +36,9 @@ const pickDocument = async () => {
 
 export default function SubjectScreen({ onLogin }) {
   const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [nascimento, setNascimento] = useState('');
+  const functionMap = {
+    pickDocument,
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,10 +60,10 @@ export default function SubjectScreen({ onLogin }) {
             key={item.id}
             icon={item.icon}
             option={item.option}
-            onPress={() => item.screen}
+            onPress={() => functionMap[item.function]()} 
         />
         ))}
-        
+
       <CustomButton buttonText='Salvar' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
     </SafeAreaView>
   );
@@ -96,6 +96,12 @@ export const styles = StyleSheet.create({
       borderColor:"#001a33",
       height: 38,
       backgroundColor: "#e0f0ff"
+    },
+      card: {
+    backgroundColor: '#f9f9f9',
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 8
     },
   });
   
