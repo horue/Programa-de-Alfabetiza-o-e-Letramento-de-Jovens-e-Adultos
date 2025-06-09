@@ -1,6 +1,7 @@
 import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Camera } from 'expo-camera';
 import * as DocumentPicker from 'expo-document-picker';
 
 
@@ -33,11 +34,21 @@ const pickDocument = async () => {
   console.log('Arquivo selecionado:', file);
 };
 
+const openCamera = async () => {
+  const { status } = await Camera.requestCameraPermissionsAsync();
+  if (status !== 'granted') {
+    alert('Permissão para usar a câmera negada!');
+    return;
+  }
+  alert('Câmera aberta');
+};
+
 
 export default function SubjectScreen({ onLogin }) {
   const [nome, setNome] = useState('');
   const functionMap = {
     pickDocument,
+    openCamera,
   };
 
   return (
