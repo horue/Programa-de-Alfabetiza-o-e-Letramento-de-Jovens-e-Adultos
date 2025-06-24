@@ -47,7 +47,7 @@ export default function LoginScreen({ onLogin }) {
       <TextInput style={styles.input} secureTextEntry={true}>
       </TextInput>
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
-        Esqueci minha senha/Cadastrar primeira senha
+        Primeiro login
       </Text>
       <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
     </SafeAreaView>
