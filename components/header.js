@@ -49,15 +49,17 @@ export const CustomHeader = ({}) => {
         const newIndex = (b - 1 + 7) % 7;
         setDay(a => a - 1);
         if (fDay <= 1 && months31.includes(fMonth)) {
-            setDay(30)
-            setMonth(fMonth - 1)
+            setDay(30);
+            setMonth(fMonth - 1);
         }
         else if (fDay <= 1 && months30.includes(fMonth)) {
-            setDay(31)
-            setMonth(fMonth - 1)
+            setDay(31);
+            setMonth(fMonth - 1);
         }
+        setB(newIndex);
         setWeek(days[newIndex]);
     }
+
 
   return(
   <Card style={styles.card}>
