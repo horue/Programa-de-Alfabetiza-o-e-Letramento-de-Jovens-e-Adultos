@@ -24,7 +24,7 @@ export default function FirstLogin({ onLogin }) {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={require('../assets/logo.png')} />
-      <Text style={styles.paragraph}>Detectamos que é a sua primeira vez realizando o login. Por favor, defina uma nova senha antes de continuar.{'\n'}Isso não acontecerá das próximas vezes que você entrar.</Text>
+      <Text style={styles.paragraph}>Detectamos que é a sua primeira vez realizando o login. Por favor, defina uma nova senha antes de continuar.{'\n'}Isso não acontecerá das próximas vezes que você entrar.{'\n'}Caso você não altere sua senha, ela continuará como a senha padrão.</Text>
       <View style={{gap: 24}}>
             <Text style={styles.common_text}>
                 Nova Senha
