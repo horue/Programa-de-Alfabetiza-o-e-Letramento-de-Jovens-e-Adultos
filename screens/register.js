@@ -9,10 +9,14 @@ import { Card } from 'react-native-paper';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
-import { adicionarUsuario } from '../modules/createUser.js';
+import { criarUsuario } from '../modules/createUser.js';
 
 
-const TypeDropdown = () => {
+const addUserHandler = () => {
+  
+}
+
+const TypeDropdown = ({ onSelect }) => {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const options = [
@@ -24,6 +28,9 @@ const TypeDropdown = () => {
 
   const handleValueChange = (value) => {
     setSelectedValue(value);
+    if (onSelect) {
+      onSelect(value);
+    }
   };
 
   return (
@@ -39,8 +46,8 @@ const TypeDropdown = () => {
 };
 
 
-
-export default function RegisterScreen({ onLogin }) {
+export default function RegisterScreen({ selectedValue }) {
+  const [cargo, setCargo] = useState(null);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
@@ -51,7 +58,8 @@ export default function RegisterScreen({ onLogin }) {
       <Text style={styles.paragraph}>
         Adicionar novo usuário{'\n'}{'\n'}
       </Text >
-      <TypeDropdown></TypeDropdown>
+      <TypeDropdown onSelect={setCargo} />
+
 
 
       <Text style={styles.common_text}>
@@ -93,7 +101,7 @@ export default function RegisterScreen({ onLogin }) {
       </TextInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarUsuario(nome, cpf, cargo, cpf)}></CustomButton>
     </SafeAreaView>
   );
 }
