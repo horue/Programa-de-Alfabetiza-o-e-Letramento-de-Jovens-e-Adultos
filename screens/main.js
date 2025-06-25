@@ -16,6 +16,7 @@ import { AttendanceScreen } from './attendance';
 import FirstLogin from './firstlogin';
 import RegisterScreen from './register';
 import SubjectScreen from './subject';
+import CreateClassScreen from './class';
 import { CustomHeader } from '../components/header';
 
 
@@ -32,6 +33,7 @@ function OptionsStack() {
       <Stack.Screen name="SubjectScreen" component={SubjectScreen} options={{ title: 'Adicionar Conteúdo' }}/>
       <Stack.Screen name="FirstLogin" component={FirstLogin} options={{ title: 'Adicionar Conteúdo' }}/>
       <Stack.Screen name="AttendanceScreen" component={AttendanceScreen} options={{title: 'Presença'}}/>
+      <Stack.Screen name="CreateClassScreen" component={CreateClassScreen} options={{title: 'Criar Turma'}}/>
     </Stack.Navigator>
   );
 }
