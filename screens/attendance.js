@@ -8,13 +8,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { full_options } from '../components/options';
 import { alunos } from '../components/test';
+import { CustomButton } from '../components/buttons';
 
 
 
 // Componente modelo
 export const AttendanceComponent = ({ nome, matricula, aberto, onPress }) => {
-    const [isChecked, setCheck] = useState(false);
-    const [isCheckedIcon, setCheckedIcon] = useState(false)
+    const [isChecked, setCheck] = useState(true);
+    const [isCheckedIcon, setCheckedIcon] = useState(true)
     const unchecked = '#ff4545';
     const checked = '#5efa50';
     const uncheckedBorder = 'red';
@@ -33,7 +34,7 @@ export const AttendanceComponent = ({ nome, matricula, aberto, onPress }) => {
 
 
   return (
-    <View style={styles.card} onPress={onPress}>
+    <View style={styles.card}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ gap: 16 }}>
           <Text style={styles.nome}>{nome}</Text>
@@ -41,24 +42,29 @@ export const AttendanceComponent = ({ nome, matricula, aberto, onPress }) => {
         </View>
         <TouchableOpacity style={{backgroundColor: boxColor,height: 40,width: 40,borderRadius: 15,left: '85%',position: 'absolute', borderColor: boxColor, borderWidth: 2}}
           onPress={checkHandler}>
-            <MaterialIcons name={finalIcon} style={{position: 'absolute', alignContent: 'center', alignSelf: 'center', verticalAlign: 'middle', alignItems: 'center', opacity: 0.9}} size={36} color={'white'}></MaterialIcons>
+            <MaterialIcons name={finalIcon} style={{position: 'absolute', alignContent: 'center', alignSelf: 'center', verticalAlign: 'middle', alignItems: 'center', opacity: 0.7}} size={36} color={'white'}></MaterialIcons>
           </TouchableOpacity>
       </View>
     </View>
   );
 };
 
+const alunosOrdenados = [...alunos].sort((a, b) => {
+    return a.nome.localeCompare(b.nome, undefined, { sensitivity: 'base' });
+  });
 
 export function AttendanceScreen({onExit}) {
   return(
-    <ScrollView style={styles.container}>
-    {alunos.map((item) => (
+    <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center', gap: 4 }}>
+    {alunosOrdenados.map((item) => (
         <AttendanceComponent
             key={item.id}
             nome={item.nome}
             matricula={item.matrícula}
         />
         ))}
+    <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'}></CustomButton>
+    <Text>{'\n'}</Text>
     </ScrollView>
   )
 };
@@ -69,15 +75,16 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ecf0f1',
-    padding: 20,
+    paddingTop: 20,
    },
     card: {
         backgroundColor: '#f9f9f9',
         padding: 15,
         marginBottom: 10,
-        borderRadius: 8
+        borderRadius: 8,
+        width: '90%',
     },
     nome: { fontSize: 16, fontWeight: 'bold'},
-    matricula: { fontSize: 16, fontWeight: 'light' },
+    matricula: { fontSize: 16, fontWeight: 'normal' },
 });
 
