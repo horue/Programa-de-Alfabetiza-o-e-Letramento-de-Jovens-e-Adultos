@@ -3,10 +3,10 @@ import { ref, set } from "firebase/database";
 import { db } from "../firebase/firebaseConfig";
 
 
-export async function criarTurma(campusP, professorP){
+export async function criarTurma(campusP, professorP, abrev){
   const ano = new Date().getFullYear();
   const numerosAleatorios = Math.floor(10+ Math.random() * 99);
-  const codigo = `${ano}${numerosAleatorios}`
+  const codigo = `${abrev}${ano}${numerosAleatorios}`
 
   const novaTurma = {
     codigo: codigo,
