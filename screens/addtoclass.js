@@ -57,7 +57,7 @@ const ClassDropdown = ({ onSelect }) => {
         const fetchClasses = async () => {
             const lista = await getClass();
             const classesFormatted = lista.map((turma) => ({
-                label: turma.codigo,
+                label: `${turma.codigo} - ${turma.professor}`,
                 value: turma.codigo,
             }));
             setClasses(classesFormatted);
