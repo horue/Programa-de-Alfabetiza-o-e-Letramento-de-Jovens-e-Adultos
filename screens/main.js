@@ -12,6 +12,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 //Imoprts Locais
 import { professor_options, full_options } from '../components/options';
 import { ProfileScreen } from './profile';
+import { AttendanceScreen } from './attendance';
+import FirstLogin from './firstlogin';
 import RegisterScreen from './register';
 import SubjectScreen from './subject';
 import { CustomHeader } from '../components/header';
@@ -25,9 +27,11 @@ const Stack = createStackNavigator();
 function OptionsStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="OptionsScreen" component={OptionsScreen} options={{ title: 'Opções' }}/>
+      <Stack.Screen name="OptionsScreen" component={OptionsScreen} options={{ title: 'Início' }}/>
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Cadastro' }}/>
       <Stack.Screen name="SubjectScreen" component={SubjectScreen} options={{ title: 'Adicionar Conteúdo' }}/>
+      <Stack.Screen name="FirstLogin" component={FirstLogin} options={{ title: 'Adicionar Conteúdo' }}/>
+      <Stack.Screen name="AttendanceScreen" component={AttendanceScreen} options={{title: 'Presença'}}/>
     </Stack.Navigator>
   );
 }
@@ -42,7 +46,7 @@ export const CardOptions = ({ icon, option, aberto, onPress}) => (
 
 // Main Component
 export function OptionsScreen({ navigation }) {
-  const [isProfessor, setProfessor] = useState(true);   
+  const [isProfessor, setProfessor] = useState(false);   
   const options = isProfessor ? professor_options : full_options;
     return(
       <>
@@ -69,8 +73,8 @@ export function MainScreen({onExit}) {
           tabBarIcon: ({ color, size }) => {
             let iconName;
 
-            if (route.name === 'Opções') {
-              iconName = 'settings';
+            if (route.name === 'Início') {
+              iconName = 'home';
             } else if (route.name === 'Perfil') {
               iconName = 'person';
             }
@@ -80,7 +84,7 @@ export function MainScreen({onExit}) {
           tabBarActiveTintColor: 'balck',
           tabBarInactiveTintColor: 'gray',
         })}>
-        <Tab.Screen name="Opções" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
+        <Tab.Screen name="Início" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
         <Tab.Screen name="Perfil">
           {() => <ProfileScreen onExit={onExit} />}
         </Tab.Screen>
