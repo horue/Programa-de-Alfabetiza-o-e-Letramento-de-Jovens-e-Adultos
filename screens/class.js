@@ -1,20 +1,30 @@
 import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { criarTurma } from '../modules/createClass.js';
+import { getUserFunction } from '../modules/getUser.js';
 
 
 const ProfessorDropdown = ({ onSelect }) => {
     const [selectedProfessor, setSelectedProfessor] = useState(null);
+    const [professors, setProfessors] = useState([]);
 
+    useEffect(() => {
+        const fetchProfessors = async () => {
+            const lista = await getUserFunction('professor');
+            const profs = lista.map((user) => ({
+                label: user.nome,
+                value: user.nome,
+            }));
+            setProfessors(profs);
+        };
 
-    const professors = [
-    { label: 'Lucas Antunes', value: 'Lucas Antunes' },
-    { label: 'Alessandro Calin', value: 'Alessandro Calin' },
-    ];
+        fetchProfessors();
+    }, []);
+
 
     const handleProfessorChange = (value) => {
         setSelectedProfessor(value);
