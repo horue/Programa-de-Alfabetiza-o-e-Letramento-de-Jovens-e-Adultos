@@ -1,0 +1,129 @@
+import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
+import {useState} from 'react';
+import RNPickerSelect from 'react-native-picker-select';
+
+// Imports from files
+import { CustomButton } from '../components/buttons.js';
+import { criarTurma } from '../modules/createClass.js';
+
+
+const ProfessorDropdown = ({ onSelect }) => {
+    const [selectedProfessor, setSelectedProfessor] = useState(null);
+
+
+    const professors = [
+    { label: 'Lucas Antunes', value: 'Lucas Antunes' },
+    { label: 'Alessandro Calin', value: 'Alessandro Calin' },
+    ];
+
+    const handleProfessorChange = (value) => {
+        setSelectedProfessor(value);
+        if (onSelect) {
+        onSelect(value);
+        }
+    };
+
+
+  return (
+    <View>
+        <RNPickerSelect
+            onValueChange={handleProfessorChange}
+            items={professors}
+            placeholder={{ label: 'Professor', value: null }}
+            value={selectedProfessor}
+        />
+    </View>
+  );
+};
+
+
+const CampusDropdown = ({ onSelect }) => {
+    const [selectedCampus, setSelectedCampus] = useState(null);
+
+
+    const campus = [
+    { label: 'Estácio - Alcântara', value: 'alcantara' },
+    { label: 'Estácio - Duque De Caxias', value: 'duque_de_caxias' },
+    { label: 'Estácio - Ilha Do Governador', value: 'ilha_do_governador' },
+    { label: 'Estácio - Queimados', value: 'queimados' },
+    { label: 'Estácio - Nova Iguaçu', value: 'nova_iguacu' },
+    { label: 'Estácio - Taquara', value: 'taquara' },
+    { label: 'Estácio - Teresópolis', value: 'teresopolis' },
+    { label: 'Estácio - Via Brasil', value: 'via_brasil' },
+    { label: 'Estácio - Nova América', value: 'nova_america' },
+    ];
+
+    const handleCampusChange = (value) => {
+        setSelectedCampus(value);
+        if (onSelect) {
+        onSelect(value);
+        }
+    };
+
+
+  return (
+    <View>
+        <RNPickerSelect
+            onValueChange={handleCampusChange}
+            items={campus}
+            placeholder={{ label: 'Campus', value: null }}
+            value={selectedCampus}
+        />
+    </View>
+  );
+};
+
+
+export default function CreateClassScreen({ selectedCampus, selectedProfessor }) {
+  const [cargo, setCargo] = useState(selectedCampus);
+  const [professor, setProfessor] = useState(selectedProfessor)
+
+
+  return (
+    <SafeAreaView style={styles.container}>
+        <Text style={styles.paragraph}>
+            Criar uma nova turma
+        </Text >
+        <CampusDropdown onSelect={setCargo}/>
+        <ProfessorDropdown onSelect={setProfessor}/>
+        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarTurma(cargo, professor)}></CustomButton>
+    </SafeAreaView>
+  );
+}
+
+
+export const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+      padding: 20,
+      gap: 12,
+    },
+    paragraph: {
+      margin: 24,
+      fontSize: 18,
+      fontWeight: 'medium',
+      textAlign: 'center',
+    },
+    common_text: {
+      fontSize: 15,
+      marginBottom: 7,
+      color: "#000000",
+      textAlign: "left",
+    },
+    input: {
+      borderWidth: 1,
+      borderRadius: 18,
+      borderColor:"#001a33",
+      height: 38,
+      backgroundColor: "#e0f0ff"
+    },
+    card: {
+        backgroundColor: '#f9f9f9',
+        padding: 15,
+        marginBottom: 10,
+        borderRadius: 8
+    },
+  });
+  
