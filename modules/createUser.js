@@ -1,21 +1,28 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../firebase/firebaseConfig';
+// services/userService.js
+import { ref, set } from "firebase/database";
+import { db } from "../firebase/firebaseConfig";
 
-export const handleRegister = async () => {
+
+export async function criarUsuario(nomeP, cpfP, cargoP, senhaP){
+  const ano = new Date().getFullYear();
+  const numerosAleatorios = Math.floor(10000000 + Math.random() * 90000000);
+  const matricula = `${ano}${numerosAleatorios}`
+
+  const novoUsuario = {
+    nome: nomeP,
+    cpf: cpfP,
+    matricula: matricula,
+    cargo: cargoP,
+    senha: senhaP,
+    primeiroLogin: true,
+    turmas: [],
+    campusId: null,
+  };
+
   try {
-    const userCred = await createUserWithEmailAndPassword(auth, email, senha); // Use o CPF como senha só se quiser
-
-    await setDoc(doc(db, 'usuarios', userCred.user.uid), {
-      nome,
-      email,
-      cpf,
-      nascimento,
-      tipo: 'comum'
-    });
-
-    console.log('Usuário criado com sucesso!');
-  } catch (err) {
-    console.error('Erro ao registrar:', err.message);
+    await set(ref(db, `usuarios/${matricula}`), novoUsuario);
+    return true;
+  } catch (error) {
+    return false
   }
 };
