@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'rea
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { full_options } from '../components/options';
 import { alunos } from '../components/test';
 import { CustomButton } from '../components/buttons';
+
+import { getStudentsFromClass } from '../modules/getstudentsclass';
 
 
 
@@ -54,15 +56,27 @@ const alunosOrdenados = [...alunos].sort((a, b) => {
   });
 
 export function AttendanceScreen({onExit}) {
+  const [alunos, setAlunos] = useState([]);
+
+  useEffect(() => {
+    const carregarAlunos = async () => {
+      const lista = await getStudentsFromClass('IG202561');
+      setAlunos(lista);
+    };
+    carregarAlunos();
+  }, []);
+
   return(
     <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center', gap: 4 }}>
-    {alunosOrdenados.map((item) => (
+    {[...alunos].sort((a, b) => (
+        a.nome.localeCompare(b.nome, undefined, { sensitivity: 'base' })
+    )).map((item) => (
         <AttendanceComponent
-            key={item.id}
+            key={item.matricula}
             nome={item.nome}
-            matricula={item.matrícula}
+            matricula={item.matricula}
         />
-        ))}
+    ))}
     <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'}></CustomButton>
     <Text>{'\n'}</Text>
     </ScrollView>
