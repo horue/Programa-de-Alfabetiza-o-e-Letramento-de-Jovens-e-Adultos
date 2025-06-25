@@ -52,15 +52,15 @@ const CampusDropdown = ({ onSelect }) => {
 
 
     const campus = [
-    { label: 'Estácio - Alcântara', value: 'alcantara' },
-    { label: 'Estácio - Duque De Caxias', value: 'duque_de_caxias' },
-    { label: 'Estácio - Ilha Do Governador', value: 'ilha_do_governador' },
-    { label: 'Estácio - Queimados', value: 'queimados' },
-    { label: 'Estácio - Nova Iguaçu', value: 'nova_iguacu' },
-    { label: 'Estácio - Taquara', value: 'taquara' },
-    { label: 'Estácio - Teresópolis', value: 'teresopolis' },
-    { label: 'Estácio - Via Brasil', value: 'via_brasil' },
-    { label: 'Estácio - Nova América', value: 'nova_america' },
+    { label: 'Estácio - Alcântara', value: ['alcantara', 'AC'] },
+    { label: 'Estácio - Duque De Caxias', value: ['duque_de_caxias', 'DC'] },
+    { label: 'Estácio - Ilha Do Governador', value: ['ilha_do_governador', 'IG'] },
+    { label: 'Estácio - Queimados', value: ['queimados', 'QM'] },
+    { label: 'Estácio - Nova Iguaçu', value: ['nova_iguacu', 'NI'] },
+    { label: 'Estácio - Taquara', value: ['taquara', 'TQ'] },
+    { label: 'Estácio - Teresópolis', value: ['teresopolis', 'TR'] },
+    { label: 'Estácio - Via Brasil', value: ['via_brasil', 'VB'] },
+    { label: 'Estácio - Nova América', value: ['nova_america', 'NA'] },
     ];
 
     const handleCampusChange = (value) => {
@@ -85,7 +85,7 @@ const CampusDropdown = ({ onSelect }) => {
 
 
 export default function CreateClassScreen({ selectedCampus, selectedProfessor }) {
-  const [cargo, setCargo] = useState(selectedCampus);
+  const [campus, setCampus] = useState(selectedCampus);
   const [professor, setProfessor] = useState(selectedProfessor)
 
 
@@ -94,9 +94,9 @@ export default function CreateClassScreen({ selectedCampus, selectedProfessor })
         <Text style={styles.paragraph}>
             Criar uma nova turma
         </Text >
-        <CampusDropdown onSelect={setCargo}/>
+        <CampusDropdown onSelect={setCampus}/>
         <ProfessorDropdown onSelect={setProfessor}/>
-        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarTurma(cargo, professor)}></CustomButton>
+        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarTurma(campus[0], professor, campus[1])}></CustomButton>
     </SafeAreaView>
   );
 }
