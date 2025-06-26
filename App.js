@@ -1,4 +1,3 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking} from 'react-native';
 import {useState} from 'react';
 
 
