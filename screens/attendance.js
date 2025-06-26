@@ -15,6 +15,7 @@ import { CustomButton } from '../components/buttons';
 import { getStudentsFromClass } from '../modules/getstudentsclass';
 import { getClass } from '../modules/getClass';
 
+import { saveAttendance } from '../modules/addAttendance';
 
 
 // Componente modelo
@@ -136,7 +137,7 @@ export function AttendanceScreen({selectedClass}) {
             }}
           />
         ))}
-        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'}></CustomButton>
+        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => saveAttendance(selectedClassCode, '02-01-01', presencas)}></CustomButton>
         <Text>{'\n'}</Text>
       </ScrollView>
     </>
