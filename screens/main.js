@@ -1,5 +1,5 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +13,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { professor_options, full_options } from '../components/options';
 import { ProfileScreen } from './profile';
 import { AttendanceScreen } from './attendance';
-import FirstLogin from './firstlogin';
 import RegisterScreen from './register';
 import SubjectScreen from './subject';
 import CreateClassScreen from './class';
