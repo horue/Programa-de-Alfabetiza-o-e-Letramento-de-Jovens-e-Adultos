@@ -12,10 +12,20 @@ import { useAppContext } from '../contexts/appcontext';
 
 export function ProfileScreen({onExit}) {
   const { usuario } = useAppContext();
+  let text = usuario.cpf;
+  let characters = text.split("");
+  let formattedCPF = characters[0] + characters[1] + characters[2] + '.' + characters[3] + characters[4] + characters[5] + '.' + characters[6] + characters[7] + characters[8] + '-' + characters[9] + characters[10];;
+
+  let text2 = usuario.matricula;
+  let characters2 = text2.split("");
+  let formattedMatricula = 
+  characters2[0] + characters2[1] + characters2[2] + characters2[3] + ' ' +
+  characters2[4] + characters2[5] + characters2[6] + characters2[7] + ' ' +
+  characters2[8] + characters2[9] + characters2[10]+ characters2[11];
 
   return(
       <ScrollView style={styles.container}>
-        <TwoColumnCard nomeCompleto={usuario.nome} matricula={usuario.matricula} CPF={usuario.cpf}></TwoColumnCard>
+        <TwoColumnCard nomeCompleto={usuario.nome} matricula={formattedMatricula} CPF={formattedCPF}></TwoColumnCard>
         <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/estacio-logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
