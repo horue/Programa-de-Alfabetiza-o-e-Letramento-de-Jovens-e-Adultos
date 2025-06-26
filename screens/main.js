@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { professor_options, full_options } from '../components/options';
 import { ProfileScreen } from './profile';
 import { AttendanceScreen } from './attendance';
+import { ClassManagementScreen } from './manageclass';
 import RegisterScreen from './register';
 import SubjectScreen from './subject';
 import CreateClassScreen from './class';
@@ -34,6 +35,7 @@ function OptionsStack() {
       <Stack.Screen name="AddToClass" component={AddToClass} options={{ title: 'Adicionar Aluno à Turma' }}/>
       <Stack.Screen name="AttendanceScreen" component={AttendanceScreen} options={{title: 'Presença'}}/>
       <Stack.Screen name="CreateClassScreen" component={CreateClassScreen} options={{title: 'Criar Turma'}}/>
+      <Stack.Screen name="ClassManagementScreen" component={ClassManagementScreen} options={{title: 'Gerenciar Turmas'}}/>
     </Stack.Navigator>
   );
 }
