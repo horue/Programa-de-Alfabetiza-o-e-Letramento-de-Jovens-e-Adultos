@@ -1,14 +1,10 @@
 //Imports React
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import RNPickerSelect from 'react-native-picker-select';
 
 
-import { full_options } from '../components/options';
 import { alunos } from '../components/test';
 import { CustomButton } from '../components/buttons';
 
