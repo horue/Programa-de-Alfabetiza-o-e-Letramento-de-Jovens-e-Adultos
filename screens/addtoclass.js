@@ -1,11 +1,10 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, View} from 'react-native';
 import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import { pickerStyles } from '../components/pickerstyle.js';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
-import { criarTurma } from '../modules/createClass.js';
 import { getClass } from '../modules/getClass.js';
 
 import { getUserFunction } from '../modules/getUser.js';
