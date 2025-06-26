@@ -1,6 +1,7 @@
 import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
 import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
+import { pickerStyles } from '../components/pickerstyle.js';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
@@ -18,7 +19,7 @@ const StudentDropdown = ({ onSelect }) => {
         const fetchStudents = async () => {
             const lista = await getUserFunction('aluno');
             const studentsFormatted = lista.map((user) => ({
-                label: user.nome,
+                label: `${user.nome} - ${user.matricula}`,
                 value: user.matricula,
             }));
             setStudents(studentsFormatted);
@@ -37,12 +38,13 @@ const StudentDropdown = ({ onSelect }) => {
 
 
   return (
-    <View>
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
         <RNPickerSelect
             onValueChange={handleStudentChange}
             items={students}
             placeholder={{ label: 'Aluno', value: null }}
             value={selectedStudent}
+            style={pickerStyles}
         />
     </View>
   );
@@ -76,12 +78,13 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View>
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
             placeholder={{ label: 'Turma', value: null }}
             value={selectedClass}
+            style={pickerStyles}
         />
     </View>
   );
@@ -109,7 +112,10 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#ecf0f1',
       padding: 20,
-      gap: 12,
+      gap: 26,
+    },
+    doropdown:{
+        backgroundColor: 'black',
     },
     paragraph: {
       margin: 24,
@@ -137,4 +143,3 @@ export const styles = StyleSheet.create({
         borderRadius: 8
     },
   });
-  
