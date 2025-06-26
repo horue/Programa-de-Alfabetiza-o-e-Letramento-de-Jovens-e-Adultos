@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, View} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -102,7 +102,7 @@ export default function CreateClassScreen({ selectedCampus, selectedProfessor })
         </Text >
         <CampusDropdown onSelect={setCampus}/>
         <ProfessorDropdown onSelect={setProfessor}/>
-        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarTurma(campus[0], professor, campus[1])}></CustomButton>
+        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {criarTurma(campus[0], professor, campus[1]); Alert.alert('Sucesso!', "Turma criada com sucesso.")}}></CustomButton>
     </SafeAreaView>
   );
 }
