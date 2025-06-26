@@ -17,6 +17,8 @@ import { pickerStyles } from '../components/pickerstyle';
 import { useAppContext } from '../contexts/appcontext';
 import { CustomHeader } from '../components/header';
 
+import { getAttendance } from '../modules/getAttendance';
+
 
 // Componente modelo
 export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) => {
@@ -103,18 +105,25 @@ export function AttendanceScreen({selectedClass}) {
 
 
   useEffect(() => {
-    const carregarAlunos = async () => {
+    if (!selectedClassCode) return;
+    (async () => {
       const lista = await getStudentsFromClass(selectedClassCode);
       setAlunos(lista);
 
-      const presencasInit = {};
-      lista.forEach(aluno => {
-        presencasInit[aluno.matricula] = true;
-      });
-      setPresencas(presencasInit);
-    };
-    carregarAlunos();
-  }, [selectedClassCode]);
+      const dataStr = typeof dataSelecionada === 'string'
+        ? dataSelecionada
+        : dataSelecionada.toISOString().split('T')[0];
+
+      const presencasSalvas = await getAttendance(selectedClassCode, dataStr);
+
+      setPresencas(
+        presencasSalvas && Object.keys(presencasSalvas).length > 0
+          ? presencasSalvas
+          : Object.fromEntries(lista.map(a => [a.matricula, true]))
+      );
+    })();
+  }, [selectedClassCode, dataSelecionada]);
+
 
   return(
     <>
