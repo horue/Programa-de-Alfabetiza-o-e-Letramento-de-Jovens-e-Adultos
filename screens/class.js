@@ -102,7 +102,7 @@ export default function CreateClassScreen({ selectedCampus, selectedProfessor })
         </Text >
         <CampusDropdown onSelect={setCampus}/>
         <ProfessorDropdown onSelect={setProfessor}/>
-        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {criarTurma(campus[0], professor, campus[1]); Alert.alert('Sucesso!', "Turma criada com sucesso.")}}></CustomButton>
+        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {professor == null || campus == null ? Alert.alert('Aviso!','Você deve escolher um campus e um professor para criar uma nova turma.') : (criarTurma(campus[0], professor, campus[1]), Alert.alert('Sucesso!', "Turma criada com sucesso."))}}></CustomButton>
     </SafeAreaView>
   );
 }
