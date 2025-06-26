@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, View} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, View, Alert } from 'react-native';
 import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import { pickerStyles } from '../components/pickerstyle.js';
@@ -101,7 +101,7 @@ export default function AddToClass({ selectedClass, selectedStudent }) {
         </Text >
         <ClassDropdown onSelect={setSelectedClassCode}/>
         <StudentDropdown onSelect={setSelectedStudentName}/>
-        <CustomButton buttonText='Adicionar Aluno à turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => addStudentToClass(selectedClassCode, selectedStudentName)}></CustomButton>
+        <CustomButton buttonText='Adicionar Aluno à turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {addStudentToClass(selectedClassCode, selectedStudentName); Alert.alert('Sucesso!', 'Aluno adicionado à turma com sucesso.')}}></CustomButton>
     </SafeAreaView>
   );
 }
