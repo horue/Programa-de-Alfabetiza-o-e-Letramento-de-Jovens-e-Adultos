@@ -1,6 +1,5 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 
 
