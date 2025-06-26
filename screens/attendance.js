@@ -55,11 +55,12 @@ export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) =>
 const ClassDropdown = ({ onSelect }) => {
     const [selectedClass, setSelectedClass] = useState('');
     const [classes, setClasses] = useState([]);
+    const { usuario } = useAppContext();
 
 
     useEffect(() => {
         const fetchClasses = async () => {
-            const lista = await getClass();
+            const lista = await getClass(usuario.cargo, usuario.nome);
             const classesFormatted = lista.map((turma) => ({
                 label: `${turma.codigo} - ${turma.professor}`,
                 value: turma.codigo,
