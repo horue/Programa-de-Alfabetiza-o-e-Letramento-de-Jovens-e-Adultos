@@ -17,6 +17,7 @@ import FirstLogin from './firstlogin';
 import RegisterScreen from './register';
 import SubjectScreen from './subject';
 import CreateClassScreen from './class';
+import AddToClass from './addtoclass';
 import { CustomHeader } from '../components/header';
 
 
@@ -29,9 +30,9 @@ function OptionsStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
       <Stack.Screen name="OptionsScreen" component={OptionsScreen} options={{ title: 'Início' }}/>
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Cadastro' }}/>
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Cadastrar Usuário' }}/>
       <Stack.Screen name="SubjectScreen" component={SubjectScreen} options={{ title: 'Adicionar Conteúdo' }}/>
-      <Stack.Screen name="FirstLogin" component={FirstLogin} options={{ title: 'Adicionar Conteúdo' }}/>
+      <Stack.Screen name="AddToClass" component={AddToClass} options={{ title: 'Adicionar Aluno à Turma' }}/>
       <Stack.Screen name="AttendanceScreen" component={AttendanceScreen} options={{title: 'Presença'}}/>
       <Stack.Screen name="CreateClassScreen" component={CreateClassScreen} options={{title: 'Criar Turma'}}/>
     </Stack.Navigator>
