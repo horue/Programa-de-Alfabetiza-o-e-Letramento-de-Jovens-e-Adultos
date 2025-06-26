@@ -1,8 +1,5 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView, Image} from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {Text, StyleSheet, ScrollView, Image} from 'react-native';
 
 
 //Imoprts Locais
