@@ -8,6 +8,8 @@ import {useState} from 'react';
 import { styles } from '../styles.js';
 import { CustomButton } from '../components/buttons.js';
 import { loginUser } from '../modules/loginUser.js';
+import { AppProvider } from '../contexts/appcontext.js';
+import { useAppContext } from '../contexts/appcontext.js';
 
 // Universal Consts
 const d = new Date();
@@ -16,6 +18,7 @@ let hour = d.getHours();
 
 
 export default function LoginScreen({ onLogin }) {
+    const { setUsuario } = useAppContext();
     const [hyperlink_estado1, mudar_hyperlink1] = useState(true)
     const [hyperlink_estado2, mudar_hyperlink2] = useState(true)
     const [matricula, setMatricula] = useState('');
@@ -25,13 +28,16 @@ export default function LoginScreen({ onLogin }) {
       const resultado = await loginUser(matricula, senha);
 
       if (resultado.success) {
-        if (onLogin) onLogin(resultado.usuario); // passa o usuário completo
+        setUsuario(resultado.usuario);    
+        if (onLogin) onLogin();                            
       } else {
-        Alert.alert("Erro", resultado.error);
+        Alert.alert('Erro', resultado.error);
       }
     };
 
+
   return (
+    <AppProvider>
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={require('../assets/logo.png')} />
       <Text style={styles.paragraph}>
@@ -60,5 +66,6 @@ export default function LoginScreen({ onLogin }) {
       </Text>
       <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={loginHandler}></CustomButton>
     </SafeAreaView>
+    </AppProvider>
   );
 }
