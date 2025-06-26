@@ -1,5 +1,5 @@
 //Imports React
-import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
 import RNPickerSelect from 'react-native-picker-select';
@@ -150,7 +150,7 @@ export function AttendanceScreen({selectedClass}) {
             }}
           />
         ))}
-        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => saveAttendance(selectedClassCode, dataSelecionada, presencas)}></CustomButton>
+        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => {saveAttendance(selectedClassCode, dataSelecionada, presencas); Alert.alert('Sucesso!','Lista de presença salva com sucesso.')}}></CustomButton>
         <Text>{'\n'}</Text>
       </ScrollView>
     </>
