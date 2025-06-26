@@ -1,11 +1,9 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
 import {useState} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
 
 
-// Imports from npm
-import { Card } from 'react-native-paper';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
