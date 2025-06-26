@@ -15,6 +15,7 @@ import { saveAttendance } from '../modules/addAttendance';
 
 import { pickerStyles } from '../components/pickerstyle';
 import { useAppContext } from '../contexts/appcontext';
+import { CustomHeader } from '../components/header';
 
 
 // Componente modelo
@@ -120,7 +121,7 @@ export function AttendanceScreen({selectedClass}) {
         <ClassDropdown onSelect={setSelectedClassCode}/>
       </View>
       <View>
-        <Text>Data selecionada: {dataSelecionada}</Text>
+        <Text style={styles.paragraph}>Chamada do Dia: {dataSelecionada}</Text>
       </View>
       <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center', gap: 4 }}>
         {[...alunos].sort((a, b) => (
@@ -152,8 +153,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ecf0f1',
-    paddingTop: 20,
    },
+  paragraph: {
+      margin: 20,
+      fontSize: 20,
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
     card: {
         backgroundColor: '#f9f9f9',
         padding: 15,
