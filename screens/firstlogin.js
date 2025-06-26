@@ -16,8 +16,6 @@ let hour = d.getHours();
 
 
 export default function FirstLogin({ onLogin }) {
-    const [hyperlink_estado1, mudar_hyperlink1] = useState(true)
-    const [hyperlink_estado2, mudar_hyperlink2] = useState(true)
 
 
 
