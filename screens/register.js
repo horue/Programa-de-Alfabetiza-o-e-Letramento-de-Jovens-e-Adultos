@@ -10,9 +10,6 @@ import { CustomButton } from '../components/buttons.js';
 import { criarUsuario } from '../modules/createUser.js';
 
 
-const addUserHandler = () => {
-  
-}
 
 const TypeDropdown = ({ onSelect }) => {
   const [selectedValue, setSelectedValue] = useState(null);
