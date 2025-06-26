@@ -87,8 +87,8 @@ const ClassDropdown = ({ onSelect }) => {
   );
 };
 
-export default function AddToClass({ selectedCampus, selectedStudent }) {
-  const [selectedClassCode, setSelectedClassCode] = useState(selectedCampus);
+export default function AddToClass({ selectedClass, selectedStudent }) {
+  const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
   const [selectedStudentName, setSelectedStudentName] = useState(selectedStudent)
 
 
