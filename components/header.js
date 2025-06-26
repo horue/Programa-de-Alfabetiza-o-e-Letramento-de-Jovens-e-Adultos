@@ -2,11 +2,11 @@
 import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Card } from 'react-native-paper';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import DarkOverlay from './overlay';
 
-
+import { useAppContext } from '../contexts/appcontext';
 
 
 //Chamada da Data
@@ -23,12 +23,28 @@ const week = d.getDay()
 const month = months[d.getMonth()];
 const monthIndex0 = d.getMonth();
 
+function formatarData(dia, mes, ano) {
+  const dd = dia < 10 ? `0${dia}` : dia;
+  const mm = mes + 1 < 10 ? `0${mes + 1}` : mes + 1; // mes é 0-based, então soma 1
+  return `${dd}-${mm}-${ano}`;
+}
+
+
 // Componente modelo
 export const CustomHeader = ({}) => {
     const [fDay, setDay] = useState(day);
     const [b, setB] = useState(week);
     const [fWeek, setWeek] = useState(days[b]);
     const [fMonth, setMonth] = useState(monthIndex0);
+
+    const { setDataSelecionada } = useAppContext();
+    useEffect(() => {
+    const ano = d.getFullYear();
+    const dataFormatada = formatarData(fDay, fMonth, ano);
+    setDataSelecionada(dataFormatada);
+    }, [fDay, fMonth]);
+
+
 
     function increment() {
         const newIndex = (b + 1) % 7;
