@@ -2,10 +2,14 @@ import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View
 import {useState, useEffect} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
+
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { criarTurma } from '../modules/createClass.js';
 import { getUserFunction } from '../modules/getUser.js';
+
+
+import { pickerStyles } from '../components/pickerstyle.js';
 
 
 const ProfessorDropdown = ({ onSelect }) => {
@@ -35,12 +39,13 @@ const ProfessorDropdown = ({ onSelect }) => {
 
 
   return (
-    <View>
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}> 
         <RNPickerSelect
             onValueChange={handleProfessorChange}
             items={professors}
             placeholder={{ label: 'Professor', value: null }}
             value={selectedProfessor}
+            style={pickerStyles}
         />
     </View>
   );
@@ -72,12 +77,13 @@ const CampusDropdown = ({ onSelect }) => {
 
 
   return (
-    <View>
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
         <RNPickerSelect
             onValueChange={handleCampusChange}
             items={campus}
             placeholder={{ label: 'Campus', value: null }}
             value={selectedCampus}
+            style={pickerStyles}
         />
     </View>
   );
@@ -108,7 +114,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#ecf0f1',
       padding: 20,
-      gap: 12,
+      gap: 26,
     },
     paragraph: {
       margin: 24,
