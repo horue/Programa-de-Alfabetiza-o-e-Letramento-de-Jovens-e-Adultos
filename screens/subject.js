@@ -1,18 +1,15 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, View, TouchableOpacity} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
 import * as DocumentPicker from 'expo-document-picker';
 
 
-// Imports from npm
-import { Card } from 'react-native-paper';
-
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { subject_options } from '../components/methods.js';
 
-export const CardOptions = ({ icon, option, aberto, onPress}) => (
+export const CardOptions = ({ icon, option, onPress}) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
     <MaterialIcons name={icon} size={24}/>
     <Text style={styles.nome}>{option}</Text>
