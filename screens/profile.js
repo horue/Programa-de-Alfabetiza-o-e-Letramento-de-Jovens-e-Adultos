@@ -5,11 +5,17 @@ import {Text, StyleSheet, ScrollView, Image} from 'react-native';
 //Imoprts Locais
 import { CustomButton } from '../components/buttons';
 import { TwoColumnCard } from '../components/twocolumn';
+import { useAppContext } from '../contexts/appcontext';
+
+
+
 
 export function ProfileScreen({onExit}) {
+  const { usuario } = useAppContext();
+
   return(
       <ScrollView style={styles.container}>
-        <TwoColumnCard nomeCompleto={'Jorge Magno Reis Vidal Filho'}></TwoColumnCard>
+        <TwoColumnCard nomeCompleto={usuario.nome} matricula={usuario.matricula} CPF={usuario.cpf}></TwoColumnCard>
         <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/estacio-logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
