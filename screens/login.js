@@ -1,10 +1,8 @@
-import { Text, SafeAreaView, StyleSheet, Image, TextInput, Button, Linking, Alert} from 'react-native';
+import { Text, SafeAreaView, Image, TextInput, Linking, Alert} from 'react-native';
 import {useState} from 'react';
 
 
 
-// Imports from npm
-import { Card } from 'react-native-paper';
 
 // Imports from files
 import { styles } from '../styles.js';
