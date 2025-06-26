@@ -14,6 +14,7 @@ import { getClass } from '../modules/getClass';
 import { saveAttendance } from '../modules/addAttendance';
 
 import { pickerStyles } from '../components/pickerstyle';
+import { useAppContext } from '../contexts/appcontext';
 
 
 // Componente modelo
@@ -53,6 +54,7 @@ export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) =>
 const ClassDropdown = ({ onSelect }) => {
     const [selectedClass, setSelectedClass] = useState('');
     const [classes, setClasses] = useState([]);
+
 
     useEffect(() => {
         const fetchClasses = async () => {
@@ -94,6 +96,8 @@ export function AttendanceScreen({selectedClass}) {
   const [alunos, setAlunos] = useState([]);
   const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
   const [presencas, setPresencas] = useState({});
+  const { dataSelecionada } = useAppContext();
+
 
 
   useEffect(() => {
@@ -115,6 +119,9 @@ export function AttendanceScreen({selectedClass}) {
       <View>         
         <ClassDropdown onSelect={setSelectedClassCode}/>
       </View>
+      <View>
+        <Text>Data selecionada: {dataSelecionada}</Text>
+      </View>
       <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center', gap: 4 }}>
         {[...alunos].sort((a, b) => (
             a.nome.localeCompare(b.nome, undefined, { sensitivity: 'base' })
@@ -132,7 +139,7 @@ export function AttendanceScreen({selectedClass}) {
             }}
           />
         ))}
-        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => saveAttendance(selectedClassCode, '02-01-01', presencas)}></CustomButton>
+        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => saveAttendance(selectedClassCode, dataSelecionada, presencas)}></CustomButton>
         <Text>{'\n'}</Text>
       </ScrollView>
     </>
