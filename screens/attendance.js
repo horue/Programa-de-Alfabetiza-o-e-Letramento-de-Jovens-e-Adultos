@@ -17,6 +17,8 @@ import { getClass } from '../modules/getClass';
 
 import { saveAttendance } from '../modules/addAttendance';
 
+import { pickerStyles } from '../components/pickerstyle';
+
 
 // Componente modelo
 export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) => {
@@ -79,12 +81,13 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View>
+    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', width: 'fill', backgroundColor: 'white'}}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
             placeholder={{ label: 'Turma', value: null }}
             value={selectedClass}
+            style={pickerStyles}
         />
     </View>
   );
