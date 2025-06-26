@@ -20,6 +20,7 @@ import CreateClassScreen from './class';
 import AddToClass from './addtoclass';
 import { CustomHeader } from '../components/header';
 import { AppProvider } from '../contexts/appcontext';
+import { useAppContext } from '../contexts/appcontext';
 
 
 const Tab = createBottomTabNavigator();
@@ -51,8 +52,8 @@ export const CardOptions = ({ icon, option, onPress}) => (
 
 // Main Component
 export function OptionsScreen({ navigation }) {
-  const [isProfessor] = useState(false);   
-  const options = isProfessor ? professor_options : full_options;
+  const { usuario } = useAppContext();
+  const options = usuario.cargo == 'professor' ? professor_options : full_options;
   return (
     <>
       <CustomHeader></CustomHeader>
@@ -72,7 +73,6 @@ export function OptionsScreen({ navigation }) {
 
 export function MainScreen({onExit}) {
   return (
-    <AppProvider>
       <NavigationContainer>
         <Tab.Navigator screenOptions={({route}) => ({
             animation: 'shift',
@@ -96,7 +96,6 @@ export function MainScreen({onExit}) {
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
-    </AppProvider>
   );
 }
 
