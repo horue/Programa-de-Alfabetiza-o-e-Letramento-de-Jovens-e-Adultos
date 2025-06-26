@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, View, Alert } from 'react-native';
 import {useState} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -8,6 +8,7 @@ import RNPickerSelect from 'react-native-picker-select';
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { criarUsuario } from '../modules/createUser.js';
+import { pickerStyles } from '../components/pickerstyle.js';
 
 
 
@@ -29,12 +30,13 @@ const TypeDropdown = ({ onSelect }) => {
   };
 
   return (
-    <View>
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
       <RNPickerSelect
         onValueChange={handleValueChange}
         items={options}
         placeholder={{ label: 'Tipo de Usuário', value: null }}
         value={selectedValue}
+        style={pickerStyles}
       />
     </View>
   );
@@ -96,7 +98,7 @@ export default function RegisterScreen({ selectedValue }) {
       </TextInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => criarUsuario(nome, cpf, cargo, cpf)}></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {criarUsuario(nome, cpf, cargo, cpf); Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')}}></CustomButton>
     </SafeAreaView>
   );
 }
