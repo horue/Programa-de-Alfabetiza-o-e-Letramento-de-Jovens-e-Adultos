@@ -19,6 +19,7 @@ import SubjectScreen from './subject';
 import CreateClassScreen from './class';
 import AddToClass from './addtoclass';
 import { CustomHeader } from '../components/header';
+import { AppProvider } from '../contexts/appcontext';
 
 
 const Tab = createBottomTabNavigator();
@@ -71,29 +72,31 @@ export function OptionsScreen({ navigation }) {
 
 export function MainScreen({onExit}) {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={({route}) => ({
-          animation: 'shift',
-          tabBarIcon: ({ color, size }) => {
-            let iconName;
+    <AppProvider>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={({route}) => ({
+            animation: 'shift',
+            tabBarIcon: ({ color, size }) => {
+              let iconName;
 
-            if (route.name === 'Início') {
-              iconName = 'home';
-            } else if (route.name === 'Perfil') {
-              iconName = 'person';
-            }
+              if (route.name === 'Início') {
+                iconName = 'home';
+              } else if (route.name === 'Perfil') {
+                iconName = 'person';
+              }
 
-            return <MaterialIcons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'balck',
-          tabBarInactiveTintColor: 'gray',
-        })}>
-        <Tab.Screen name="Início" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
-        <Tab.Screen name="Perfil">
-          {() => <ProfileScreen onExit={onExit} />}
-        </Tab.Screen>
-      </Tab.Navigator>
-    </NavigationContainer>
+              return <MaterialIcons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: 'balck',
+            tabBarInactiveTintColor: 'gray',
+          })}>
+          <Tab.Screen name="Início" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
+          <Tab.Screen name="Perfil">
+            {() => <ProfileScreen onExit={onExit} />}
+          </Tab.Screen>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 }
 
