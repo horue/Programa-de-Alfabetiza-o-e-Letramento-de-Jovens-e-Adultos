@@ -6,16 +6,12 @@ export const TwoColumnCard = ({ leftContent, rightContent, CPF, matricula, campu
       <Text style={styles.nome}>{nomeCompleto}</Text>
       <View style={styles.columnsContainer}>
         <View style={styles.column}>
-          <Text>Matrícula</Text>
+          <Text style={styles.title}>Matrícula</Text>
           <Text>{matricula}</Text>
-          <Text>Campus</Text>
-          <Text>{campus}</Text>
         </View>
         <View style={styles.column}>
-          <Text>CPF</Text>
+          <Text style={styles.title}>CPF</Text>
           <Text>{CPF}</Text>
-          <Text>Nascimento</Text>
-          <Text>{nascimento}</Text>
         </View>
       </View>
     </View>
@@ -40,6 +36,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 26,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 6,
   },
   columnsContainer: {
     flexDirection: 'row',
