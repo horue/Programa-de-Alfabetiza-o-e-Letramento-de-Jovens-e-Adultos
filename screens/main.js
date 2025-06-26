@@ -39,7 +39,7 @@ function OptionsStack() {
 }
 
 // Componente modelo
-export const CardOptions = ({ icon, option, aberto, onPress}) => (
+export const CardOptions = ({ icon, option, onPress}) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
     <MaterialIcons name={icon} size={24}/>
     <Text style={styles.nome}>{option}</Text>
@@ -48,12 +48,12 @@ export const CardOptions = ({ icon, option, aberto, onPress}) => (
 
 // Main Component
 export function OptionsScreen({ navigation }) {
-  const [isProfessor, setProfessor] = useState(false);   
+  const [isProfessor] = useState(false);   
   const options = isProfessor ? professor_options : full_options;
-    return(
-      <>
-        <CustomHeader></CustomHeader>
-        <ScrollView style={styles.container}>
+  return (
+    <>
+      <CustomHeader></CustomHeader>
+      <ScrollView style={styles.container}>
         {options.map((item) => (
         <CardOptions
             key={item.id}
