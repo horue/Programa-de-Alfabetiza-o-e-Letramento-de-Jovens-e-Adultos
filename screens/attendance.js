@@ -90,10 +90,6 @@ const ClassDropdown = ({ onSelect }) => {
 };
 
 
-const alunosOrdenados = [...alunos].sort((a, b) => {
-    return a.nome.localeCompare(b.nome, undefined, { sensitivity: 'base' });
-  });
-
 export function AttendanceScreen({selectedClass}) {
   const [alunos, setAlunos] = useState([]);
   const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
