@@ -18,9 +18,7 @@ import { getClass } from '../modules/getClass';
 
 
 // Componente modelo
-export const AttendanceComponent = ({ nome, matricula, aberto, onPress }) => {
-    const [isChecked, setCheck] = useState(true);
-    const [isCheckedIcon, setCheckedIcon] = useState(true)
+export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) => {
     const unchecked = '#ff4545';
     const checked = '#5efa50';
     const uncheckedBorder = 'red';
@@ -28,12 +26,11 @@ export const AttendanceComponent = ({ nome, matricula, aberto, onPress }) => {
     const uncheckedIcon = 'close';
     const checkedIcon = 'check';
     const boxColor = isChecked ? checked && checkedBorder : unchecked && uncheckedBorder;
-    const finalIcon = isCheckedIcon ? checkedIcon : uncheckedIcon;
+    const finalIcon = isChecked ? checkedIcon : uncheckedIcon;
 
 
     const checkHandler = () => {     
-        setCheck(!isChecked)
-        setCheckedIcon(!isCheckedIcon)   
+      onToggle();  
     }
 
 
@@ -100,15 +97,22 @@ const alunosOrdenados = [...alunos].sort((a, b) => {
 export function AttendanceScreen({selectedClass}) {
   const [alunos, setAlunos] = useState([]);
   const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
+  const [presencas, setPresencas] = useState({});
 
 
   useEffect(() => {
     const carregarAlunos = async () => {
       const lista = await getStudentsFromClass(selectedClassCode);
       setAlunos(lista);
+
+      const presencasInit = {};
+      lista.forEach(aluno => {
+        presencasInit[aluno.matricula] = true;
+      });
+      setPresencas(presencasInit);
     };
     carregarAlunos();
-  },  [selectedClassCode]);
+  }, [selectedClassCode]);
 
   return(
     <>
@@ -119,11 +123,18 @@ export function AttendanceScreen({selectedClass}) {
         {[...alunos].sort((a, b) => (
             a.nome.localeCompare(b.nome, undefined, { sensitivity: 'base' })
         )).map((item) => (
-            <AttendanceComponent
-                key={item.matricula}
-                nome={item.nome}
-                matricula={item.matricula}
-            />
+          <AttendanceComponent
+            key={item.matricula}
+            nome={item.nome}
+            matricula={item.matricula}
+            isChecked={presencas[item.matricula]}
+            onToggle={() => {
+              setPresencas(prev => ({
+                ...prev,
+                [item.matricula]: !prev[item.matricula],
+              }));
+            }}
+          />
         ))}
         <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'}></CustomButton>
         <Text>{'\n'}</Text>
