@@ -1,13 +1,61 @@
-import { Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import {useState} from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
 import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
+import RNPickerSelect from 'react-native-picker-select';
+import { pickerStyles } from '../components/pickerstyle.js';
+
 
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { subject_options } from '../components/methods.js';
+import { useAppContext } from '../contexts/appcontext';
+import { useEffect } from 'react';
+
+const ClassDropdown = ({ onSelect }) => {
+    const [selectedClass, setSelectedClass] = useState('');
+    const [classes, setClasses] = useState([]);
+    const { usuario } = useAppContext();
+
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            const lista = await getClass(usuario.cargo, usuario.nome);
+            const classesFormatted = lista.map((turma) => ({
+                label: `${turma.codigo} - ${turma.professor}`,
+                value: turma.codigo,
+            }));
+            setClasses(classesFormatted);
+        };
+
+        fetchClasses();
+    }, []);
+
+
+    const handleClassChange = (value) => {
+        setSelectedClass(value);
+        if (onSelect) {
+        onSelect(value);
+        }
+    };
+
+
+  return (
+    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', width: 'fill', backgroundColor: 'white'}}>
+        <RNPickerSelect
+            onValueChange={handleClassChange}
+            items={classes}
+            placeholder={{ label: 'Turma', value: null }}
+            value={selectedClass}
+            style={pickerStyles}
+        />
+    </View>
+  );
+};
+
 
 export const CardOptions = ({ icon, option, onPress}) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
@@ -32,26 +80,38 @@ const pickDocument = async () => {
 };
 
 const openCamera = async () => {
-  const { status } = await Camera.requestCameraPermissionsAsync();
+  const { status } = await ImagePicker.requestCameraPermissionsAsync();
   if (status !== 'granted') {
     alert('Permissão para usar a câmera negada!');
     return;
   }
-  alert('Câmera aberta');
+
+  const result = await ImagePicker.launchCameraAsync({
+    allowsEditing: false,
+    quality: 1,
+  });
+
+  if (!result.canceled) {
+    const photo = result.assets[0];
+    console.log('Foto tirada:', photo.uri);
+  }
 };
 
 
 export default function SubjectScreen({ onLogin }) {
   const [nome, setNome] = useState('');
+  const { dataSelecionada } = useAppContext();
   const functionMap = {
     pickDocument,
     openCamera,
   };
 
   return (
+    <>
+    <ClassDropdown></ClassDropdown>
     <SafeAreaView style={styles.container}>
         <Text style={styles.paragraph}>
-            Aula do dia:{' n° dia'}{' mes'}{'\n'}{'\n'}
+            Aula do dia {dataSelecionada}
         </Text >
 
         <Text style={styles.common_text}>
@@ -74,8 +134,10 @@ export default function SubjectScreen({ onLogin }) {
 
       <CustomButton buttonText='Salvar' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
     </SafeAreaView>
+    </>
   );
 }
+
 
 
 export const styles = StyleSheet.create({
