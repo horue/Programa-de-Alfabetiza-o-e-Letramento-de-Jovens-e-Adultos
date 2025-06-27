@@ -150,7 +150,8 @@ export function AttendanceScreen({selectedClass}) {
             }}
           />
         ))}
-        <CustomButton buttonText={'Confirmar'} buttonColor={'#00acbb'} textColor={'white'} onPress={() => {saveAttendance(selectedClassCode, dataSelecionada, presencas); Alert.alert('Sucesso!','Lista de presença salva com sucesso.')}}></CustomButton>
+        <Text>{'\n'}</Text>
+        <CustomButton buttonText={'Salvar'} buttonColor={'#00acbb'} textColor={'white'}  styles={{width: 180}}onPress={() => {selectedClassCode == null? Alert.alert('Aviso!', 'Nenhuma tumrma selecionada.') : (saveAttendance(selectedClassCode, dataSelecionada, presencas), Alert.alert('Sucesso!','Lista de presença salva com sucesso.'))}}></CustomButton>
         <Text>{'\n'}</Text>
       </ScrollView>
     </>
