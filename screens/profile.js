@@ -27,7 +27,7 @@ export function ProfileScreen({onExit}) {
       <ScrollView style={styles.container}>
         <TwoColumnCard nomeCompleto={usuario.nome} matricula={formattedMatricula} CPF={formattedCPF}></TwoColumnCard>
         <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
-        <Image style={styles.logo} source={require('../assets/estacio-logo.png')} />
+        <Image style={styles.logo} source={require('../assets/logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
       </ScrollView>
   )
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     },
     logo: {
       margin: 29,
-      height: '18%',
+      height: '28%',
       resizeMode: "contain",
       justifyContent: 'center',
       position: 'center',
