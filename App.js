@@ -10,7 +10,7 @@ import { AppProvider } from './contexts/appcontext.js';
 const d = new Date();
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState('3');
+  const [isLoggedIn, setIsLoggedIn] = useState('');
 
   return(
     <AppProvider>
