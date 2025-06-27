@@ -56,7 +56,7 @@ export default function LoginScreen({ onLogin }) {
       </Text>
       <TextInput style={styles.input} value={matricula} onChangeText={setMatricula}> 
       </TextInput>
-      <Text style={hyperlink_estado1 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink1(prev => false);}}>
+      <Text style={hyperlink_estado1 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://palja-info.bearblog.dev/nao-sei-a-matricula/').catch(err => console.log(err));mudar_hyperlink1(prev => false);}}>
         Não sei a matrícula
       </Text>
       <Text style={styles.common_text}>
@@ -64,7 +64,7 @@ export default function LoginScreen({ onLogin }) {
       </Text>
       <TextInput style={styles.input} secureTextEntry={true} value={senha} onChangeText={setSenha}>
       </TextInput>
-      <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://example.com').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
+      <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://palja-info.bearblog.dev/primeiro-login/').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
         Primeiro login
       </Text>
       <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={loginHandler}></CustomButton>
