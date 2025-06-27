@@ -10,6 +10,8 @@ import { CustomButton } from '../components/buttons.js';
 import { criarUsuario } from '../modules/createUser.js';
 import { pickerStyles } from '../components/pickerstyle.js';
 
+import { sha256 } from 'js-sha256';
+
 
 
 const TypeDropdown = ({ onSelect }) => {
@@ -49,6 +51,8 @@ export default function RegisterScreen({ selectedValue }) {
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
   const [nascimento, setNascimento] = useState('');
+  const senhaHasheada = sha256(cpf);
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -98,7 +102,7 @@ export default function RegisterScreen({ selectedValue }) {
       </TextInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, cpf), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
     </SafeAreaView>
   );
 }

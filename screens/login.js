@@ -10,6 +10,7 @@ import { CustomButton } from '../components/buttons.js';
 import { loginUser } from '../modules/loginUser.js';
 import { AppProvider } from '../contexts/appcontext.js';
 import { useAppContext } from '../contexts/appcontext.js';
+import { sha256 } from 'js-sha256';
 
 // Universal Consts
 const d = new Date();
@@ -23,9 +24,11 @@ export default function LoginScreen({ onLogin }) {
     const [hyperlink_estado2, mudar_hyperlink2] = useState(true)
     const [matricula, setMatricula] = useState('');
     const [senha, setSenha] = useState('');
+    const senhaHasheada = sha256(senha);
+
 
     const loginHandler = async () => {
-      const resultado = await loginUser(matricula, senha);
+      const resultado = await loginUser(matricula, senhaHasheada);
 
       if (resultado.success) {
         setUsuario(resultado.usuario);    
