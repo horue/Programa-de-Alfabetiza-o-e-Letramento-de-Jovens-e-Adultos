@@ -89,10 +89,44 @@ const CampusDropdown = ({ onSelect }) => {
   );
 };
 
+const ClassTypeDropdown = ({ onSelect }) => {
+    const [selectedClassType, setSelectedClassType] = useState(null);
 
-export default function CreateClassScreen({ selectedCampus, selectedProfessor }) {
-  const [campus, setCampus] = useState(selectedCampus);
-  const [professor, setProfessor] = useState(selectedProfessor)
+
+    const campus = [
+    { label: 'Alfabetização', value: ['alfabetização', 'A'] },
+    { label: 'Letramento', value: ['letramento', 'L'] },
+
+    ];
+
+    const handleClassTypeChange = (value) => {
+        setSelectedClassType(value);
+        if (onSelect) {
+        onSelect(value);
+        }
+    };
+
+
+  return (
+    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+        <RNPickerSelect
+            onValueChange={handleClassTypeChange}
+            items={campus}
+            placeholder={{ label: 'Tipo de Turma', value: null }}
+            value={selectedClassType}
+            style={pickerStyles}
+        />
+    </View>
+  );
+};
+
+
+
+export default function CreateClassScreen({ selectedCampus, selectedProfessor, selectedClassType }) {
+    const [campus, setCampus] = useState(selectedCampus);
+    const [professor, setProfessor] = useState(selectedProfessor)
+    const [classType, setClassType] = useState(selectedClassType)
+
 
 
   return (
@@ -101,8 +135,9 @@ export default function CreateClassScreen({ selectedCampus, selectedProfessor })
             Criar uma nova turma
         </Text >
         <CampusDropdown onSelect={setCampus}/>
+        <ClassTypeDropdown onSelect={setClassType}></ClassTypeDropdown>
         <ProfessorDropdown onSelect={setProfessor}/>
-        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {professor == null || campus == null ? Alert.alert('Aviso!','Você deve escolher um campus e um professor para criar uma nova turma.') : (criarTurma(campus[0], professor, campus[1]), Alert.alert('Sucesso!', "Turma criada com sucesso."))}}></CustomButton>
+        <CustomButton buttonText='Criar nova turma' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {professor == null || campus == null ? Alert.alert('Aviso!','Você deve escolher um campus e um professor para criar uma nova turma.') : (criarTurma(campus[0], professor, campus[1], classType[0], classType[1]), Alert.alert('Sucesso!', "Turma criada com sucesso."))}}></CustomButton>
     </SafeAreaView>
   );
 }
