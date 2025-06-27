@@ -35,6 +35,7 @@ export default function FirstLogin({ onLogin }) {
             <TextInput style={styles.input} secureTextEntry={true}>
             </TextInput>
             <CustomButton buttonText='Alterar senha' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
+            <CustomButton buttonText='Pular' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
         </View>
     </SafeAreaView>
   );
