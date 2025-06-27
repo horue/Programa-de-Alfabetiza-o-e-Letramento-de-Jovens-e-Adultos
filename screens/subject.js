@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import {useState} from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
@@ -7,13 +7,15 @@ import * as ImagePicker from 'expo-image-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { pickerStyles } from '../components/pickerstyle.js';
 
-
+// NOTA IMPORTANTE: O FIREBASE STORAGE REQUER UM PLANO PAGO PARA A UTILIZAÇÃO, ISSO IMPEDIU O PROJETO DE SER FINALIZADO. ENTRETANTO, O CONTEÚDO, POR TEXTO, PODE SER SALVO NO BANCO DE DADOS
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
 import { subject_options } from '../components/methods.js';
 import { useAppContext } from '../contexts/appcontext';
 import { useEffect } from 'react';
+import { getClass } from '../modules/getClass.js';
+import { saveSubject } from '../modules/addSubject.js';
 
 const ClassDropdown = ({ onSelect }) => {
     const [selectedClass, setSelectedClass] = useState('');
@@ -98,8 +100,9 @@ const openCamera = async () => {
 };
 
 
-export default function SubjectScreen({ onLogin }) {
+export default function SubjectScreen({ selectedClass }) {
   const [nome, setNome] = useState('');
+  const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
   const { dataSelecionada } = useAppContext();
   const functionMap = {
     pickDocument,
@@ -108,19 +111,21 @@ export default function SubjectScreen({ onLogin }) {
 
   return (
     <>
-    <ClassDropdown></ClassDropdown>
+    <ClassDropdown onSelect={setSelectedClassCode}></ClassDropdown>
     <SafeAreaView style={styles.container}>
         <Text style={styles.paragraph}>
             Aula do dia {dataSelecionada}
         </Text >
 
         <Text style={styles.common_text}>
-            Título da Aula
+            Conteúdo da Aula
         </Text>
         <TextInput 
             style={styles.input}
             value={nome}
-            onChangeText={setNome}>
+            onChangeText={setNome}
+            multiline={true}
+            >
         </TextInput>
 
         {subject_options.map((item) => (
@@ -132,7 +137,7 @@ export default function SubjectScreen({ onLogin }) {
         />
         ))}
 
-      <CustomButton buttonText='Salvar' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
+      <CustomButton buttonText='Salvar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => { selectedClassCode == null ? (Alert.alert('Aviso!', 'Nenhuma turma foi selecionada.')) : (saveSubject(selectedClassCode, dataSelecionada, nome), Alert.alert('Sucesso!', 'Conteúdo salvo com sucesso.'))}}></CustomButton>
     </SafeAreaView>
     </>
   );
@@ -164,7 +169,7 @@ export const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 18,
       borderColor:"#001a33",
-      height: 38,
+      height: 96,
       backgroundColor: "#e0f0ff"
     },
       card: {
