@@ -8,6 +8,9 @@ import { Card } from 'react-native-paper';
 
 // Imports from files
 import { CustomButton } from '../components/buttons.js';
+import { toggleFirstLogin } from '../modules/firstLoginToggle.js';
+import { useAppContext } from '../contexts/appcontext';
+
 
 // Universal Consts
 const d = new Date();
@@ -16,7 +19,7 @@ let hour = d.getHours();
 
 
 export default function FirstLogin({ onLogin }) {
-
+    const { usuario } = useAppContext();
 
 
   return (
@@ -35,7 +38,7 @@ export default function FirstLogin({ onLogin }) {
             <TextInput style={styles.input} secureTextEntry={true}>
             </TextInput>
             <CustomButton buttonText='Alterar senha' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
-            <CustomButton buttonText='Pular' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onLogin}></CustomButton>
+            <CustomButton buttonText='Pular' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {toggleFirstLogin(usuario.matricula) ; onLogin()}}></CustomButton>
         </View>
     </SafeAreaView>
   );
