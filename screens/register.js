@@ -122,8 +122,10 @@ export default function RegisterScreen({ selectedValue }) {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
+  const [matricula, setMatricula] = useState('');
   const [nascimento, setNascimento] = useState('');
   const senhaHasheada = sha256(cpf);
+  const verificarCargo = cargo == 'aluno'? false:true;
 
 
   return (
@@ -144,6 +146,17 @@ export default function RegisterScreen({ selectedValue }) {
         onChangeText={setNome}>
       </TextInput>
 
+
+      <Text style={styles.common_text}>
+        Matrícula
+      </Text>
+      <TextInput 
+        style={styles.input}
+        value={matricula}
+        onChangeText={setMatricula}
+        editable={verificarCargo}
+        keyboardType="numeric">
+      </TextInput>
 
       <Text style={styles.common_text}>
         Email
@@ -171,7 +184,7 @@ export default function RegisterScreen({ selectedValue }) {
       <NascimentoInput></NascimentoInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada, matricula), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
     </KeyboardAvoidingView>
   );
 }
