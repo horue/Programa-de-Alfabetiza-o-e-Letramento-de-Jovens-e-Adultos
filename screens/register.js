@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, StyleSheet, TextInput, View, Alert } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, TextInput, View, Alert, KeyboardAvoidingView } from 'react-native';
 import {useState} from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -44,6 +44,78 @@ const TypeDropdown = ({ onSelect }) => {
   );
 };
 
+const NascimentoInput = () => {
+  const [nascimento, setNascimento] = useState('');
+
+  const [form, setForm] = useState({});
+
+  
+  const handleInputChange = value => {
+    setNascimento(value);
+    if (value.length === 8) {
+      try {
+        const year = parseInt(value.slice(4, 8), 10);
+        if (Number.isNaN(year) || year < 1900 || year > 2025) {
+          throw new Error('Ano inválido.');
+        }
+
+        const month = parseInt(value.slice(2, 4), 10);
+        if (Number.isNaN(month) || month < 1 || month > 12) {
+          throw new Error('Mês inválido.');
+        }
+
+        const day = parseInt(value.slice(0, 2), 10);
+        const maxDaysInMonth = new Date(year, month, 0).getDate();
+        if (Number.isNaN(day) || day < 1 || day > maxDaysInMonth) {
+          throw new Error('Dia inválido.');
+        }
+
+        setForm({ dateOfBirth: `${year}-${month}-${day}` });
+      } 
+      catch (_) {
+        alert('Data inválida, tente novamente.');
+        setNascimento('');
+      }
+    }
+  };
+
+    return (
+      <View style={styles.input}>
+        <TextInput
+            autoCapitalize="none"
+            autoCorrect={false}
+            caretHidden={true}
+            keyboardType="number-pad"
+            maxLength={8}
+            onChangeText={handleInputChange}
+            style={styles.inputControl}
+            value={nascimento} 
+        />
+
+        <View style={styles.inputOverflow}>
+          {'DD/MM/AAAA'.split('').map((placeholder, index, arr) => {
+            const countDelimiters = arr
+              .slice(0, index)
+              .filter(char => char === '/').length;
+
+            const indexWithoutDelimeter = index - countDelimiters;
+            const current = nascimento[indexWithoutDelimeter];
+
+            return (
+              <Text key={index} style={styles.inputChar}>
+                {placeholder === '/' || !current ?
+                  (<Text style={styles.inputCharEmpty}>{placeholder}</Text>) : 
+                  (current)
+                }
+              </Text>
+            );
+          }
+          )}
+        </View>
+      </View>
+  );
+}
+
 
 export default function RegisterScreen({ selectedValue }) {
   const [cargo, setCargo] = useState(null);
@@ -55,7 +127,7 @@ export default function RegisterScreen({ selectedValue }) {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <Text style={styles.paragraph}>
         Adicionar novo usuário{'\n'}{'\n'}
       </Text >
@@ -96,14 +168,11 @@ export default function RegisterScreen({ selectedValue }) {
       <Text style={styles.common_text}>
         Data de Nascimento
       </Text>
-      <TextInput style={styles.input}
-        value={nascimento}
-        onChangeText={setNascimento}>
-      </TextInput>
+      <NascimentoInput></NascimentoInput>
 
 
       <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -117,7 +186,7 @@ export const styles = StyleSheet.create({
       gap: 12,
     },
     paragraph: {
-      margin: 24,
+      margin: 0,
       fontSize: 18,
       fontWeight: 'medium',
       textAlign: 'center',
@@ -135,5 +204,33 @@ export const styles = StyleSheet.create({
       height: 38,
       backgroundColor: "#e0f0ff"
     },
+        inputOverflow: {
+      zIndex: 1,
+      position: 'absolute',
+      width: '100%',
+      flexDirection: 'row'
+    },
+    inputChar: {
+      flexGrow: 1,
+      flexShrink: 1,
+      flexBasis: 0,
+      lineHeight: 35,
+      fontSize: 20,
+      textAlign: 'center',
+      fontWeight: '600',
+    },
+    inputCharEmpty: {
+      color: '#BBB9BC',
+      fontWeight: 'medium',
+    },
+    inputControl: {
+      borderWidth: 1,
+      borderRadius: 180,
+      height: 38,
+      color: 'transparent',
+      borderColor: '#C9D3DB',
+      borderStyle: 'solid',
+      zIndex: 2
+    }
   });
   
