@@ -40,7 +40,6 @@ export default function LoginScreen({ onLogin }) {
 
 
   return (
-    <AppProvider>
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={require('../assets/logo.png')} />
       <Text style={styles.paragraph}>
@@ -69,6 +68,5 @@ export default function LoginScreen({ onLogin }) {
       </Text>
       <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={loginHandler}></CustomButton>
     </SafeAreaView>
-    </AppProvider>
   );
 }
