@@ -3,15 +3,17 @@ import { ref, set } from "firebase/database";
 import { db } from "../firebase/firebaseConfig";
 
 
-export async function criarUsuario(nomeP, cpfP, cargoP, senhaP){
+export async function criarUsuario(nomeP, cpfP, cargoP, senhaP, matriculaP){
   const ano = new Date().getFullYear();
   const numerosAleatorios = Math.floor(10000000 + Math.random() * 90000000);
-  const matricula = `${ano}${numerosAleatorios}`
+  if (matriculaP == '') {
+    matriculaP = `${ano}${numerosAleatorios}`
+  }
 
   const novoUsuario = {
     nome: nomeP,
     cpf: cpfP,
-    matricula: matricula,
+    matricula: matriculaP,
     cargo: cargoP,
     senha: senhaP,
     primeiroLogin: true,
@@ -20,7 +22,7 @@ export async function criarUsuario(nomeP, cpfP, cargoP, senhaP){
   };
 
   try {
-    await set(ref(db, `usuarios/${matricula}`), novoUsuario);
+    await set(ref(db, `usuarios/${matriculaP}`), novoUsuario);
     return true;
   } catch (error) {
     return false
