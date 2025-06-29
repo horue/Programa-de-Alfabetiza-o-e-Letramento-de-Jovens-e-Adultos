@@ -54,7 +54,7 @@ export default function LoginScreen({ onLogin }) {
       <Text style={styles.common_text}>
         Matrícula
       </Text>
-      <TextInput style={styles.input} value={matricula} onChangeText={setMatricula}> 
+      <TextInput style={styles.input} value={matricula} onChangeText={setMatricula}  keyboardType={"numeric"}> 
       </TextInput>
       <Text style={hyperlink_estado1 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://palja-info.bearblog.dev/nao-sei-a-matricula/').catch(err => console.log(err));mudar_hyperlink1(prev => false);}}>
         Não sei a matrícula
