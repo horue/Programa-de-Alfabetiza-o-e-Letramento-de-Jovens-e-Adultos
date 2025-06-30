@@ -4,7 +4,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Card } from 'react-native-paper';
 import { useState, useEffect } from 'react';
 
-import DarkOverlay from './overlay';
 
 import { useAppContext } from '../contexts/appcontext';
 
