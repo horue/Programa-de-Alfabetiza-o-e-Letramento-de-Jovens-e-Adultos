@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "projeto-estacio",
+    "name": "Meu-PALJA",
     "slug": "snack-2deae7b2-3374-4332-9425-b414899a5960",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon-b.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icon-b.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +17,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon-b.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.horue.snack2deae7b2337443329425b414899a5960"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "98b008d3-6701-49b3-a0c8-ca3924d035cb"
+      }
     }
   }
 }
