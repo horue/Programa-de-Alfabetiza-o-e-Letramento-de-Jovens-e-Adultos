@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
 
-import { alunos } from '../components/test';
 import { CustomButton } from '../components/buttons';
 
 import { getStudentsFromClass } from '../modules/getstudentsclass';
