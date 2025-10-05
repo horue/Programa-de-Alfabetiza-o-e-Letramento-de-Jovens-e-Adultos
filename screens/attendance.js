@@ -21,14 +21,17 @@ import { getAttendance } from '../modules/getAttendance';
 
 // Componente modelo
 export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) => {
-    const unchecked = '#ff4545';
+    const falta = '#ff4545';
     const checked = '#5efa50';
-    const uncheckedBorder = 'red';
-    const checkedBorder = '#5efa50';
-    const uncheckedIcon = 'close';
-    const checkedIcon = 'check';
-    const boxColor = isChecked ? checked && checkedBorder : unchecked && uncheckedBorder;
-    const finalIcon = isChecked ? checkedIcon : uncheckedIcon;
+    const abono = '#5078faff'
+    const faltaBorder = 'red';
+    const presenteBorder = '#5efa50';
+    const abonoBorder = 'blue'
+    const faltaIcon = 'close';
+    const presenteIcon = 'check';
+    const abonoIcon = 'task-alt'
+    const boxColor = isChecked === 1 ? checked && presenteBorder : isChecked === 0 ? falta && faltaBorder : abono && abonoBorder;
+    const finalIcon = isChecked === 0 ? faltaIcon : isChecked === 1 ? presenteIcon : abonoIcon;
 
 
     const checkHandler = () => {     
@@ -44,9 +47,9 @@ export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) =>
           <Text style={styles.nome}>{nome}</Text>
           <Text style={styles.matricula}>Matrícula: {matricula}</Text>
         </View>
-        <TouchableOpacity style={{backgroundColor: boxColor,height: 40,width: 40,borderRadius: 15,left: '85%',position: 'absolute', borderColor: boxColor, borderWidth: 2}}
+        <TouchableOpacity style={{backgroundColor: boxColor,height: 46,width: 46,borderRadius: 15,left: '85%',position: 'absolute', borderColor: boxColor, borderWidth: 2}}
           onPress={checkHandler}>
-            <MaterialIcons name={finalIcon} style={{position: 'absolute', alignContent: 'center', alignSelf: 'center', verticalAlign: 'middle', alignItems: 'center', opacity: 0.7}} size={36} color={'white'}></MaterialIcons>
+            <MaterialIcons name={finalIcon} style={{position: 'absolute', alignContent: 'center', alignSelf: 'center', verticalAlign: 'middle', alignItems: 'center', opacity: 0.7, top: '8%', left: '8%'}} size={34} color={'white'}></MaterialIcons>
           </TouchableOpacity>
       </View>
     </View>
@@ -144,7 +147,7 @@ export function AttendanceScreen({selectedClass}) {
             onToggle={() => {
               setPresencas(prev => ({
                 ...prev,
-                [item.matricula]: !prev[item.matricula],
+                [item.matricula]: (prev[item.matricula] + 1) % 3,
               }));
             }}
           />
