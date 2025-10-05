@@ -53,7 +53,7 @@ export const CardOptions = ({ icon, option, onPress}) => (
 // Main Component
 export function OptionsScreen({ navigation }) {
   const { usuario } = useAppContext();
-  const options = usuario.cargo == 'professor' ? professor_options : full_options;
+  const options = usuario.cargo === 'professor' || usuario.cargo === 'monitor' ? professor_options : full_options;
   return (
     <>
       <CustomHeader></CustomHeader>
