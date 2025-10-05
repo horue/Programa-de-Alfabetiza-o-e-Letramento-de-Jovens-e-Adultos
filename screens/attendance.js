@@ -106,6 +106,10 @@ export function AttendanceScreen({selectedClass}) {
   const [selectedClassCode, setSelectedClassCode] = useState(selectedClass);
   const [presencas, setPresencas] = useState({});
   const { dataSelecionada } = useAppContext();
+  const dataFiltrada = dataSelecionada.split("-")
+  const dataFormatada = dataFiltrada[0] + '/' + dataFiltrada[1] + '/' + dataFiltrada[2]
+
+
 
 
 
@@ -136,7 +140,7 @@ export function AttendanceScreen({selectedClass}) {
         <ClassDropdown onSelect={setSelectedClassCode}/>
       </View>
       <View>
-        <Text style={styles.paragraph}>Chamada do Dia: {dataSelecionada}</Text>
+        <Text style={styles.paragraph}>Chamada do Dia: {dataFormatada}</Text>
       </View>
       <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center', gap: 4 }}>
         {[...alunos].sort((a, b) => (
