@@ -1,5 +1,5 @@
 //Imports React
-import {Text, StyleSheet, ScrollView, Image} from 'react-native';
+import {Text, StyleSheet, View, Image} from 'react-native';
 
 
 //Imoprts Locais
@@ -24,12 +24,13 @@ export function ProfileScreen({onExit}) {
   characters2[8] + characters2[9] + characters2[10]+ characters2[11];
 
   return(
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <TwoColumnCard nomeCompleto={usuario.nome} matricula={formattedMatricula} CPF={formattedCPF}></TwoColumnCard>
+        <CustomButton buttonText='Alterar senha' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
         <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/logo.png')} />
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
-      </ScrollView>
+      </View>
   )
 };
 
@@ -41,7 +42,8 @@ export const styles = StyleSheet.create({
       paddingTop: 120,
       padding: 20,
       marginBottom: 30,
-     },
+      gap: 20,
+    },
     card: {
       backgroundColor: '#f9f9f9',
       padding: 15,
@@ -55,7 +57,7 @@ export const styles = StyleSheet.create({
     },
     logo: {
       margin: 29,
-      height: '28%',
+      height: '20%',
       resizeMode: "contain",
       justifyContent: 'center',
       position: 'center',
