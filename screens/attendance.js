@@ -30,8 +30,11 @@ export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) =>
     const faltaIcon = 'close';
     const presenteIcon = 'check';
     const abonoIcon = 'task-alt'
-    const boxColor = isChecked === 1 ? checked && presenteBorder : isChecked === 0 ? falta && faltaBorder : abono && abonoBorder;
-    const finalIcon = isChecked === 0 ? faltaIcon : isChecked === 1 ? presenteIcon : abonoIcon;
+    // Foi aplicada uma lógica simples de números, então, mais na frente, quando tiver para começar a lista de presença
+    //ela vai começar com todos os alunos no 0 (presentes), já que, normalmente, faltam menos alunos do que vão
+    //GUIA DOS NÚMRROS: 0 = Presente; 1 = Falta; 2 = Abono. Dessa forma fica mais fluída a utilização, já que o abono vem após a falta.
+    const boxColor = isChecked === 0 ? presenteBorder : isChecked === 1 ? faltaBorder : abonoBorder;
+    const finalIcon = isChecked === 0 ? presenteIcon : isChecked === 1 ? faltaIcon : abonoIcon;
 
 
     const checkHandler = () => {     
@@ -121,7 +124,7 @@ export function AttendanceScreen({selectedClass}) {
       setPresencas(
         presencasSalvas && Object.keys(presencasSalvas).length > 0
           ? presencasSalvas
-          : Object.fromEntries(lista.map(a => [a.matricula, true]))
+          : Object.fromEntries(lista.map(a => [a.matricula, 0]))
       );
     })();
   }, [selectedClassCode, dataSelecionada]);
