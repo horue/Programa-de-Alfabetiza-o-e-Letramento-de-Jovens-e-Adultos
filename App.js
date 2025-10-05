@@ -17,8 +17,6 @@ export default function App() {
       {
         isLoggedIn == '' ? 
           <LoginScreen onLogin={() => setIsLoggedIn('firstLogin')}/> : 
-        isLoggedIn == 'firstLogin' ?
-          <FirstLogin onLogin={() => setIsLoggedIn('loggedIn')}/> :
           <MainScreen onExit={() => setIsLoggedIn('')}/>
       }
     </AppProvider>
