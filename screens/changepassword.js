@@ -24,7 +24,7 @@ export default function ChangePasswordScreen({ }) {
             <Text style={styles.common_text}>
                 Nova Senha
             </Text>
-            <TextInput style={styles.input}>
+            <TextInput style={styles.input} secureTextEntry={true}>
             </TextInput>
             <Text style={styles.common_text}>
                 Confirme a senha

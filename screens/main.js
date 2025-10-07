@@ -87,7 +87,7 @@ export function MainScreen({onExit}) {
 
               return <MaterialIcons name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: 'balck',
+            tabBarActiveTintColor: 'black',
             tabBarInactiveTintColor: 'gray',
           })}>
           <Tab.Screen name="Início" component={OptionsStack} below-icon={<MaterialIcons name={'person-add'} size={24}/>} options={{ headerShown: false }}/>
