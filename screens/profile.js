@@ -6,6 +6,7 @@ import {Text, StyleSheet, View, Image} from 'react-native';
 import { CustomButton } from '../components/buttons';
 import { TwoColumnCard } from '../components/twocolumn';
 import { useAppContext } from '../contexts/appcontext';
+import ChangePasswordScreen from './changepassword';
 
 
 
@@ -25,10 +26,10 @@ export function ProfileScreen({onExit}) {
 
   return(
       <View style={styles.container}>
-        <TwoColumnCard nomeCompleto={usuario.nome} matricula={formattedMatricula} CPF={formattedCPF}></TwoColumnCard>
-        <CustomButton buttonText='Alterar senha' textAlign='center' textColor='white' buttonColor='#00acbb'></CustomButton>
-        <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Image style={styles.logo} source={require('../assets/logo.png')} />
+        <TwoColumnCard nomeCompleto={usuario.nome} matricula={formattedMatricula} CPF={formattedCPF}></TwoColumnCard>
+        <CustomButton buttonText='Alterar senha' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={ChangePasswordScreen}></CustomButton>
+        <CustomButton buttonText='Sair' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={onExit} ></CustomButton>
         <Text style={styles.info_text}>As informações presentes podem ser validadas mediante apresentação de documento com foto.</Text>
       </View>
   )
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#ecf0f1',
-      paddingTop: 120,
+      paddingTop: 80,
       padding: 20,
       marginBottom: 30,
       gap: 20,
