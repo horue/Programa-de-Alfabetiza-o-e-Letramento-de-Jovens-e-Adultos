@@ -17,9 +17,12 @@ export const CustomButton = ({ icon, buttonText, textAlign, onPress, buttonColor
 export const styles = StyleSheet.create({
     card: {
         height: 40,
+        width: 700,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center', 
+        marginHorizontal: "auto",
+        marginTop: 40,
         elevation: 2
     },
     center: {

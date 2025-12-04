@@ -16,11 +16,13 @@ export const styles = StyleSheet.create({
       fontSize: 15,
       marginBottom: 7,
       color: "#000000",
+      marginHorizontal: 'auto',
       textAlign: "left",
     },
     hyperlink:{
       fontSize: 14,
       margin: 7,
+      marginHorizontal: 620,
       color: "#0000ff",
       textAlign: "right",
     },
@@ -36,6 +38,8 @@ export const styles = StyleSheet.create({
       borderRadius: 18,
       borderColor:"#001a33",
       height: 38,
+      width: 700,
+      marginHorizontal: "auto",
       backgroundColor: "#e0f0ff"
     },
       logo: {
