@@ -80,7 +80,7 @@ const NascimentoInput = () => {
   };
 
     return (
-      <View style={styles.input}>
+      <View style={styles.inputNasc}>
         <TextInput
             autoCapitalize="none"
             autoCorrect={false}
@@ -214,16 +214,30 @@ export const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 18,
       borderColor:"#001a33",
+      width: 700,
+      height: 38,
+      padding: 10,
+      backgroundColor: "#e0f0ff"
+    },
+
+    inputNasc: {
+      borderWidth: 1,
+      borderRadius: 18,
+      borderColor:"#001a33",
+      width: 700,
       height: 38,
       backgroundColor: "#e0f0ff"
     },
-        inputOverflow: {
+    inputOverflow: {   //Nascimento
+      borderRadius: 18,
       zIndex: 1,
       position: 'absolute',
       width: '100%',
+      height: 38,
       flexDirection: 'row'
     },
-    inputChar: {
+    inputChar: {  //Nascimento
+      borderRadius: 18,
       flexGrow: 1,
       flexShrink: 1,
       flexBasis: 0,
@@ -232,17 +246,19 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       fontWeight: '600',
     },
-    inputCharEmpty: {
+    inputCharEmpty: {  //Nascimento
+      borderRadius: 18,
       color: '#BBB9BC',
       fontWeight: 'medium',
     },
-    inputControl: {
+    inputControl: {  //Nascimento
       borderWidth: 1,
-      borderRadius: 180,
+      borderRadius: 18,
+      borderColor:"transparent",
+      width: 700,
       height: 38,
+      position: 'absolute',
       color: 'transparent',
-      borderColor: '#C9D3DB',
-      borderStyle: 'solid',
       zIndex: 2
     }
   });
