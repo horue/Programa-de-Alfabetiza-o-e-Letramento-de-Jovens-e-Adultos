@@ -206,6 +206,7 @@ export const styles = StyleSheet.create({
     },
     common_text: {
       fontSize: 15,
+      marginLeft : 10,
       marginBottom: 7,
       color: "#000000",
       textAlign: "left",
@@ -213,16 +214,18 @@ export const styles = StyleSheet.create({
     input: {
       borderWidth: 1,
       borderRadius: 18,
+      marginLeft : 10,
       borderColor:"#001a33",
       width: 700,
       height: 38,
-      padding: 10,
+      padding: 15,
       backgroundColor: "#e0f0ff"
     },
 
     inputNasc: {
       borderWidth: 1,
       borderRadius: 18,
+      marginLeft : 10,
       borderColor:"#001a33",
       width: 700,
       height: 38,
