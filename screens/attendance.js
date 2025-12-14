@@ -32,7 +32,7 @@ export const AttendanceComponent = ({ nome, matricula, isChecked, onToggle }) =>
     const abonoIcon = 'task-alt'
     // Foi aplicada uma lógica simples de números, então, mais na frente, quando tiver para começar a lista de presença
     //ela vai começar com todos os alunos no 0 (presentes), já que, normalmente, faltam menos alunos do que vão
-    //GUIA DOS NÚMRROS: 0 = Presente; 1 = Falta; 2 = Abono. Dessa forma fica mais fluída a utilização, já que o abono vem após a falta.
+    //GUIA DOS NÚMEROS: 0 = Presente; 1 = Falta; 2 = Abono. Dessa forma fica mais fluída a utilização, já que o abono vem após a falta.
     const boxColor = isChecked === 0 ? presenteBorder : isChecked === 1 ? faltaBorder : abonoBorder;
     const finalIcon = isChecked === 0 ? presenteIcon : isChecked === 1 ? faltaIcon : abonoIcon;
 
@@ -88,7 +88,7 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', width: 'fill', backgroundColor: 'white'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
@@ -189,5 +189,15 @@ export const styles = StyleSheet.create({
     },
     nome: { fontSize: 17, fontWeight: 'bold'},
     matricula: { fontSize: 16, fontWeight: 'normal' },
+
+    dropdown: {
+      marginTop: 50,
+      alignSelf: 'center',
+      borderWidth: 2, 
+      borderColor: 'white', 
+      overflow: 'hidden', 
+      width: 800,
+      backgroundColor: '#ecf0f1',
+    },
 });
 

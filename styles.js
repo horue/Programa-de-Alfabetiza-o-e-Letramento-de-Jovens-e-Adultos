@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
       marginHorizontal: "auto",
       backgroundColor: "#e0f0ff"
     },
-      logo: {
+    logo: {
       height: 100,
       width: 346,
       resizeMode: "contain",

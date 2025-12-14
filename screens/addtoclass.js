@@ -37,7 +37,7 @@ const StudentDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleStudentChange}
             items={students}
@@ -77,7 +77,7 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
@@ -140,5 +140,14 @@ export const styles = StyleSheet.create({
         padding: 15,
         marginBottom: 10,
         borderRadius: 8
+    },
+    dropdown: {
+      marginTop: 25,
+      alignSelf: 'center',
+      borderWidth: 2, 
+      borderColor: 'white', 
+      overflow: 'hidden', 
+      width: 800,
+      backgroundColor: '#ecf0f1',
     },
   });

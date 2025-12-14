@@ -74,7 +74,7 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', width: 'fill', backgroundColor: 'white'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
@@ -150,5 +150,15 @@ export const styles = StyleSheet.create({
     },
     nome: { fontSize: 17, fontWeight: 'bold'},
     matricula: { fontSize: 16, fontWeight: 'normal' },
+
+    dropdown: {
+      marginTop: 50,
+      alignSelf: 'center',
+      borderWidth: 2, 
+      borderColor: 'white', 
+      overflow: 'hidden', 
+      width: 800,
+      backgroundColor: '#ecf0f1',
+    },
 });
 

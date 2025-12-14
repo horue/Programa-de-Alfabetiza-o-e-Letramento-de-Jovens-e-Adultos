@@ -39,7 +39,7 @@ const ProfessorDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}> 
+    <View style={styles.dropdown}> 
         <RNPickerSelect
             onValueChange={handleProfessorChange}
             items={professors}
@@ -77,7 +77,7 @@ const CampusDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleCampusChange}
             items={campus}
@@ -108,7 +108,7 @@ const ClassTypeDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleClassTypeChange}
             items={campus}
@@ -175,6 +175,15 @@ export const styles = StyleSheet.create({
         padding: 15,
         marginBottom: 10,
         borderRadius: 8
+    },
+    dropdown: {
+      marginTop: 20,
+      alignSelf: 'center',
+      borderWidth: 2, 
+      borderColor: 'white', 
+      overflow: 'hidden', 
+      width: 800,
+      backgroundColor: '#ecf0f1',
     },
   });
   

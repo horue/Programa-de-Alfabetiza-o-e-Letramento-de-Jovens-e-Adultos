@@ -32,7 +32,7 @@ const TypeDropdown = ({ onSelect }) => {
   };
 
   return (
-    <View style={{borderRadius: 20, borderWidth: 2, borderColor: 'white', overflow: 'hidden'}}>
+    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', marginLeft: 10, width: 700,}}>
       <RNPickerSelect
         onValueChange={handleValueChange}
         items={options}
