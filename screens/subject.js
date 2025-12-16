@@ -46,7 +46,7 @@ const ClassDropdown = ({ onSelect }) => {
 
 
   return (
-    <View style={{borderWidth: 2, borderColor: 'white', overflow: 'hidden', width: 'fill', backgroundColor: 'white'}}>
+    <View style={styles.dropdown}>
         <RNPickerSelect
             onValueChange={handleClassChange}
             items={classes}
@@ -162,21 +162,38 @@ export const styles = StyleSheet.create({
     common_text: {
       fontSize: 15,
       marginBottom: 7,
+      marginHorizontal: 'auto',
       color: "#000000",
       textAlign: "left",
     },
     input: {
       borderWidth: 1,
       borderRadius: 18,
+      paddingTop: 10,
+      paddingLeft: 15,
+      marginHorizontal: "auto",
+      marginBottom: 30,
       borderColor:"#001a33",
+      width: 1100,
       height: 96,
       backgroundColor: "#e0f0ff"
     },
-      card: {
-    backgroundColor: '#f9f9f9',
-    padding: 15,
-    marginBottom: 10,
-    borderRadius: 8
+    card: {
+      backgroundColor: '#f9f9f9',
+      padding: 15,
+      marginBottom: 10,
+      marginHorizontal: "auto",
+      width: 1100,
+      borderRadius: 8
+    },
+    dropdown: {
+      marginTop: 25,
+      alignSelf: 'center',
+      borderWidth: 2, 
+      borderColor: 'white', 
+      overflow: 'hidden', 
+      width: 800,
+      backgroundColor: '#ecf0f1',
     },
   });
   
