@@ -1,6 +1,6 @@
 import { Text, SafeAreaView, Image, TextInput, Linking, Alert} from 'react-native';
 import {useState} from 'react';
-
+import { ActivityIndicator, Card } from 'react-native-paper';
 
 
 
@@ -25,16 +25,18 @@ export default function LoginScreen({ onLogin }) {
     const [matricula, setMatricula] = useState('');
     const [senha, setSenha] = useState('');
     const senhaHasheada = sha256(senha);
+    const [loading, setLoading] = useState(false)
 
 
     const loginHandler = async () => {
       const resultado = await loginUser(matricula, senhaHasheada);
-
+      
       if (resultado.success) {
         setUsuario(resultado.usuario);    
         if (onLogin) onLogin();                            
       } else {
-        Alert.alert('Erro', resultado.error);
+        alert('Erro no login, tente novamente.', resultado.error);
+        setLoading(loading)
       }
     };
 
@@ -63,7 +65,11 @@ export default function LoginScreen({ onLogin }) {
       <Text style={hyperlink_estado2 ? styles.hyperlink : styles.hyperlink_clicked} onPress={()=>{Linking.openURL('https://palja-info.bearblog.dev/primeiro-login/').catch(err => console.log(err));mudar_hyperlink2(prev => false);}}>
         Primeiro login
       </Text>
-      <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={loginHandler}></CustomButton>
+      {
+        loading ?
+        <ActivityIndicator size="large" color="#00acbb"/> :
+        <CustomButton buttonText='Entrar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => { loginHandler(); setLoading(!loading); }}></CustomButton>
+      }
     </SafeAreaView>
   );
 }
