@@ -184,7 +184,7 @@ export default function RegisterScreen({ selectedValue }) {
       <NascimentoInput></NascimentoInput>
 
 
-      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (Alert.alert('Aviso!', 'Os campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada, matricula), Alert.alert('Sucesso!', 'Novo usuário criado com sucesso.')) }}></CustomButton>
+      <CustomButton buttonText='Adicionar' textAlign='center' textColor='white' buttonColor='#00acbb' onPress={() => {nome=='' || cargo==null || cpf==''? (alert('Aviso! \nOs campos "Tipo de Usuário", "Nome" e "CPF" não podem estar vazios.')) : (criarUsuario(nome, cpf, cargo, senhaHasheada, matricula), alert('Sucesso! \nNovo usuário criado com sucesso.')) }}></CustomButton>
     </KeyboardAvoidingView>
   );
 }
